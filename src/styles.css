@@ -1,0 +1,123 @@
+:host {
+  --vc-background: var(
+    --ha-card-background,
+    var(--card-background-color, transparent)
+  );
+  --vc-primary-text-color: var(--primary-text-color);
+  --vc-secondary-text-color: var(--secondary-text-color);
+  --vc-icon-color: var(--secondary-text-color);
+  --vc-toolbar-background: transparent;
+  --vc-toolbar-text-color: var(--secondary-text-color);
+  --vc-toolbar-icon-color: var(--secondary-text-color);
+  --vc-divider-color: var(--entities-divider-color, var(--divider-color));
+  --vc-spacing: 10px;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+ha-card {
+  background: var(--vc-background);
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview {
+  position: relative;
+  text-align: center;
+
+  &.not-available {
+    filter: grayscale(1);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+@keyframes cleaning {
+  0% {
+    transform: rotate(0) translate(0);
+  }
+  5% {
+    transform: rotate(0) translate(0, -10px);
+  }
+  10% {
+    transform: rotate(0) translate(0, 5px);
+  }
+  15% {
+    transform: rotate(0) translate(0);
+  }
+  /* Turn left */
+  20% {
+    transform: rotate(30deg) translate(0);
+  }
+  25% {
+    transform: rotate(30deg) translate(0, -10px);
+  }
+  30% {
+    transform: rotate(30deg) translate(0, 5px);
+  }
+  35% {
+    transform: rotate(30deg) translate(0);
+  }
+  40% {
+    transform: rotate(0) translate(0);
+  }
+  /* Turn right */
+  45% {
+    transform: rotate(-30deg) translate(0);
+  }
+  50% {
+    transform: rotate(-30deg) translate(0, -10px);
+  }
+  55% {
+    transform: rotate(-30deg) translate(0, 5px);
+  }
+  60% {
+    transform: rotate(-30deg) translate(0);
+  }
+  70% {
+    transform: rotate(0deg) translate(0);
+  }
+  /* Staying still */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes returning {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.not-available .offline {
+  text-align: center;
+  color: var(--vc-primary-text-color);
+  font-size: 16px;
+}
+
+.metadata {
+  margin: var(--vc-spacing) auto;
+}
+
+ha-icon {
+  color: var(--vc-icon-color);
+}

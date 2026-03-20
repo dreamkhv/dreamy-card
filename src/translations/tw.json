@@ -1,0 +1,81 @@
+{
+  "status": {
+    "cleaning": "清掃中",
+    "auto": "自動清掃",
+    "spot": "局部清掃",
+    "edge": "沿邊清掃",
+    "single_room": "單間清掃",
+    "paused": "已暫停",
+    "idle": "待機",
+    "stop": "已停止",
+    "charging": "充電中",
+    "returning": "返回基座",
+    "returning_home": "返回基座",
+    "docked": "已在充電座",
+    "unknown": "未知",
+    "offline": "離線",
+    "error": "錯誤",
+    "charger_disconnected": "充電器已斷開",
+    "remote_control_active": "遠端控制已啟用",
+    "manual_mode": "手動模式",
+    "shutting_down": "關機中",
+    "updating": "更新中",
+    "going_to_target": "前往目標",
+    "zoned_cleaning": "分區清掃",
+    "segment_cleaning": "分段清掃"
+  },
+  "source": {
+    "gentle": "柔和",
+    "silent": "靜音",
+    "standard": "標準",
+    "medium": "中等",
+    "turbo": "強力",
+    "normal": "正常",
+    "max": "最大",
+    "max_plus": "最大+",
+    "high": "高",
+    "strong": "強勁",
+    "quiet": "安靜",
+    "auto": "自動",
+    "balanced": "平衡",
+    "custom": "自訂",
+    "off": "關閉"
+  },
+  "common": {
+    "name": "掃地機卡片",
+    "description": "Vacuum Card 可以讓您控制掃地機器人",
+    "start": "開始清掃",
+    "continue": "繼續清掃",
+    "pause": "暫停清掃",
+    "stop": "停止清掃",
+    "return_to_base": "返回充電座",
+    "locate": "定位掃地機器人",
+    "not_available": "掃地機器人並不支援"
+  },
+  "error": {
+    "invalid_config": "設定無效",
+    "missing_entity": "必須指定一個實體!"
+  },
+  "warning": {
+    "actions_array": "警告：'actions' 保留用於覆寫現有按鈕的預設動作。若您的意圖是新增額外動作，請改用 'shortcuts' 選項。"
+  },
+  "editor": {
+    "entity": "實體 (必填)",
+    "battery_entity": "電池實體（可選）",
+    "map": "地圖 (選填)",
+    "image": "圖片 (選填)",
+    "compact_view": "精簡檢視",
+    "compact_view_aria_label_on": "開啟精簡檢視",
+    "compact_view_aria_label_off": "關閉精簡檢視",
+    "show_name": "顯示名字",
+    "show_name_aria_label_on": "開啟名字顯示",
+    "show_name_aria_label_off": "關閉名字顯示",
+    "show_status": "顯示狀態",
+    "show_status_aria_label_on": "開啟狀態顯示",
+    "show_status_aria_label_off": "關閉狀態顯示",
+    "show_toolbar": "顯示工具欄",
+    "show_toolbar_aria_label_on": "開啟工具欄顯示",
+    "show_toolbar_aria_label_off": "關閉工具欄顯示",
+    "code_only_note": "提醒: 如果要使用 actions 和 stats 選項，請使用編碼編輯器編輯"
+  }
+}
