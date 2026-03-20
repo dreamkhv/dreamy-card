@@ -61,7 +61,7 @@ export class DreamyCard extends LitElement {
         <div class="preview">
           <div class="header"></div>
 
-          <div class="metadata"></div>
+          <div class="metadata">Привет, мир :)</div>
         </div>
       </ha-card>
     `;
