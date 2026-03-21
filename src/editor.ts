@@ -27,7 +27,7 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
     this.config = config;
 
     if (!this.config.entity) {
-      this.config.entity = this.getEntitiesByType('vacuum')[0] || '';
+      this.config.entity = this.getEntitiesByType('input_number')[0] || '';
       fireEvent(this, 'config-changed', { config: this.config });
     }
   }
@@ -44,7 +44,7 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
       return nothing;
     }
 
-    const vacuumEntities = this.getEntitiesByType('vacuum');
+    const entities = this.getEntitiesByType('input_number');
 
     return html`
       <div class="card-config">
@@ -60,7 +60,7 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
             required
             validationMessage=${localize('error.missing_entity')}
           >
-            ${vacuumEntities.map(
+            ${entities.map(
               (entity) =>
                 html` <mwc-list-item .value=${entity}
                   >${entity}</mwc-list-item

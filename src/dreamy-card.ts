@@ -25,6 +25,10 @@ export class DreamyCard extends LitElement {
 
   @state() private config!: DreamyCardConfig;
 
+  @property({ type: Number }) public min: number = 0;
+  @property({ type: Number }) public max: number = 100;
+  @property({ type: Number }) public step: number = 1;
+
   static get styles(): CSSResultGroup {
     return styles;
   }
@@ -54,14 +58,44 @@ export class DreamyCard extends LitElement {
     return hasConfigOrEntityChanged(this, changedProps, false);
   }
 
+  private get(): number {
+    return +this.hass.states[this.config.entity].state;
+  };
+
+  private onChange = async (value: number): Promise<void> => {
+    await this.hass.callService('input_number', 'set_value', {
+      entity_id: this.config.entity,
+      value: value,
+    });
+  };
+
   protected render(): TemplateResult {
+    const handleDecrement = () => {
+      this.onChange(Math.max(this.min, this.get() - this.step));
+    };
+
+    const handleIncrement = () => {
+      this.onChange(Math.min(this.max, this.get() + this.step));
+    };
     return html`
       <ha-card>
         <ha-ripple></ha-ripple>
         <div class="preview">
           <div class="header"></div>
 
-          <div class="metadata">Привет, мир :)</div>
+          <div class="number-input">
+            <div class="controls">
+              <button class="button" @click=${handleDecrement}>
+                <ha-icon icon="mdi:minus"></ha-icon>
+              </button>
+              <div class="content">
+                <div class="value">${this.get()}</div>
+              </div>
+              <button class="button" @click=${handleIncrement}>
+                <ha-icon icon="mdi:plus"></ha-icon>
+              </button>
+            </div>
+          </div>
         </div>
       </ha-card>
     `;
