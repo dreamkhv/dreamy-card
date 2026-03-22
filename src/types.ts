@@ -7,6 +7,7 @@ export type Template = TemplateResult | TemplateNothing;
 
 export interface DreamyCardConfig {
   entity: string;
+  name: string;
   image: string;
   compact_view: boolean;
 }

@@ -60,6 +60,7 @@
     "actions_array": "WARNING: 'actions' is reserved to override default actions for existing buttons. If your intention was to add additional actions, use the 'shortcuts' option instead."
   },
   "editor": {
+    "name": "Label (optional)",
     "entity": "Entity (Required)",
     "battery_entity": "Battery Entity (Optional)",
     "map": "Map Camera (Optional)",

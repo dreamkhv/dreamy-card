@@ -68,6 +68,14 @@ export class DreamyCard extends LitElement {
     return typeof u === 'string' && u.length ? u : '';
   }
 
+  private getLabel(): string {
+    const custom = this.config.name?.trim();
+    if (custom) return custom;
+    const fn = this.hass.states[this.config.entity]?.attributes?.friendly_name;
+    if (typeof fn === 'string' && fn.length) return fn;
+    return this.config.entity;
+  }
+
   private onChange = async (value: number): Promise<void> => {
     await this.hass.callService('input_number', 'set_value', {
       entity_id: this.config.entity,
@@ -90,26 +98,29 @@ export class DreamyCard extends LitElement {
       <ha-card>
         <div class="preview">
           <div class="number-input">
-            <button
-              type="button"
-              class="button"
-              aria-label="Decrease"
-              @click=${handleDecrement}
-            >
-              <ha-icon icon="mdi:minus"></ha-icon>
-            </button>
-            <div class="value-wrap">
-              <span class="value">${this.get()}</span>
-              ${unit ? html`<span class="unit">${unit}</span>` : nothing}
+            <span class="label">${this.getLabel()}</span>
+            <div class="control-row">
+              <button
+                type="button"
+                class="button"
+                aria-label="Decrease"
+                @click=${handleDecrement}
+              >
+                <ha-icon icon="mdi:minus"></ha-icon>
+              </button>
+              <div class="value-wrap">
+                <span class="value">${this.get()}</span>
+                ${unit ? html`<span class="unit">${unit}</span>` : nothing}
+              </div>
+              <button
+                type="button"
+                class="button"
+                aria-label="Increase"
+                @click=${handleIncrement}
+              >
+                <ha-icon icon="mdi:plus"></ha-icon>
+              </button>
             </div>
-            <button
-              type="button"
-              class="button"
-              aria-label="Increase"
-              @click=${handleIncrement}
-            >
-              <ha-icon icon="mdi:plus"></ha-icon>
-            </button>
           </div>
         </div>
       </ha-card>
