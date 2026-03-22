@@ -19,6 +19,8 @@
 
 ha-card {
   background: var(--vc-background);
+  border: none;
+  box-shadow: none;
   flex-direction: column;
   flex: 1;
   position: relative;
