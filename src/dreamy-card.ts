@@ -88,7 +88,7 @@ export class DreamyCard extends LitElement {
                 <ha-icon icon="mdi:minus"></ha-icon>
               </button>
               <div class="content">
-                <div class="value">${this.get()}</div>
+                <div class="value">${this.get()} min</div>
               </div>
               <button class="button" @click=${handleIncrement}>
                 <ha-icon icon="mdi:plus"></ha-icon>
