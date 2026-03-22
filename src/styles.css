@@ -45,11 +45,6 @@ ha-card:hover {
   }
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-}
-
 @keyframes cleaning {
   0% {
     transform: rotate(0) translate(0);
@@ -137,24 +132,27 @@ ha-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 12px;
 
-  .content {
+  .value-wrap {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
-
-    .value {
-      font-size: 14px;
-      color: var(--vc-primary-text-color);
-      line-height: 1;
-    }
+    gap: 4px;
+    min-width: 3ch;
   }
 
-  .controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .value {
+    font-size: 14px;
+    color: var(--vc-primary-text-color);
+    line-height: 1;
+  }
+
+  .unit {
+    font-size: 12px;
+    color: var(--vc-secondary-text-color);
+    line-height: 1;
   }
 
   .button {
