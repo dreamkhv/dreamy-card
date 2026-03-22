@@ -18,13 +18,22 @@
 }
 
 ha-card {
+  --ha-card-background: var(--vc-background);
   background: var(--vc-background);
   border: none;
   box-shadow: none;
+  transition: none;
   flex-direction: column;
   flex: 1;
   position: relative;
   overflow: hidden;
+}
+
+ha-card:hover {
+  --ha-card-background: var(--vc-background);
+  background: var(--vc-background);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 .preview {
