@@ -99,6 +99,7 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
   }
 
   private valueChanged(event: Event): void {
+    console.log('valueChanged', event);
     if (!this.config || !this.hass || !event.target) {
       return;
     }
