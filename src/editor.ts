@@ -20,9 +20,6 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
 
   @state() private config!: Partial<DreamyCardConfig>;
 
-  @state() private image? = undefined;
-  @state() private compact_view = false;
-
   setConfig(config: LovelaceCardConfig & DreamyCardConfig): void {
     this.config = config;
 
@@ -47,14 +44,14 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
     return html`
       <div class="card-config">
         <div class="option">
-          <ha-entity-picker
+          <ha-selector
             .hass=${this.hass}
-            .label=${localize('editor.entity')}
+            .selector=${{ entity: {} }}
             .value=${this.config.entity ?? ''}
+            .label=${localize('editor.entity')}
             .configValue=${'entity'}
-            required
             @value-changed=${this.valueChanged}
-          ></ha-entity-picker>
+          ></ha-selector>
         </div>
 
         <div class="option">
