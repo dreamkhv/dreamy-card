@@ -13,6 +13,7 @@
   margin-right: 10px;
 }
 
+.option ha-icon-picker,
 .option ha-selector,
 .option ha-textfield {
   width: 100%;

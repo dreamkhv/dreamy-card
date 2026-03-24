@@ -14,6 +14,7 @@ export default function buildConfig(
 
   return {
     entity: config.entity,
+    icon: (config.icon ?? '').trim(),
     name: (config.name ?? '').trim(),
     unit: (config.unit ?? '').trim(),
   };

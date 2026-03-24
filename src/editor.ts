@@ -54,6 +54,16 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
         </div>
 
         <div class="option">
+          <ha-icon-picker
+            .hass=${this.hass}
+            .value=${this.config.icon ?? ''}
+            .configValue=${'icon'}
+            label="${localize('editor.icon')}"
+            @value-changed=${this.valueChanged}
+          ></ha-icon-picker>
+        </div>
+
+        <div class="option">
           <ha-textfield
             label="${localize('editor.name')}"
             .value=${this.config.name ?? ''}

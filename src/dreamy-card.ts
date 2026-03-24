@@ -71,6 +71,13 @@ export class DreamyCard extends LitElement {
     return this.config.entity;
   }
 
+  private getIcon(): string | undefined {
+    const fromConfig = this.config.icon?.trim();
+    if (fromConfig) return fromConfig;
+    const raw = this.hass.states[this.config.entity]?.attributes?.icon;
+    return typeof raw === 'string' && raw.trim().length ? raw.trim() : undefined;
+  }
+
   private onChange = async (value: number): Promise<void> => {
     await this.hass.callService('input_number', 'set_value', {
       entity_id: this.config.entity,
@@ -88,12 +95,22 @@ export class DreamyCard extends LitElement {
     };
     
     const unit = this.getUnit();
-    
+    const icon = this.getIcon();
+
     return html`
       <ha-card>
-        <div class="preview">
+        <div class="preview card-content">
           <div class="number-input">
-            <span class="label">${this.getLabel()}</span>
+            <div class="label-wrap">
+              ${icon
+                ? html`
+                    <div class="label-icon-circle" aria-hidden="true">
+                      <ha-icon icon=${icon}></ha-icon>
+                    </div>
+                  `
+                : nothing}
+              <span class="label">${this.getLabel()}</span>
+            </div>
             <div class="control-row">
               <button
                 type="button"
