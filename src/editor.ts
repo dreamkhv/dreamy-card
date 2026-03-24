@@ -48,7 +48,6 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
             .hass=${this.hass}
             .selector=${{ entity: {} }}
             .value=${this.config.entity ?? ''}
-            .label=${localize('editor.entity')}
             .configValue=${'entity'}
             @value-changed=${this.valueChanged}
           ></ha-selector>
