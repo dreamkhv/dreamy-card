@@ -15,5 +15,6 @@ export default function buildConfig(
   return {
     entity: config.entity,
     name: (config.name ?? '').trim(),
+    unit: (config.unit ?? '').trim(),
   };
 }

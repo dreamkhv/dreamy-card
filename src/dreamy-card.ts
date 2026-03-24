@@ -2,13 +2,10 @@ import { LitElement, html, nothing, TemplateResult } from 'lit';
 import type { CSSResultGroup, PropertyValues } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { hasConfigOrEntityChanged, HomeAssistant } from 'custom-card-helpers';
-import registerTemplates from 'ha-template';
 import localize from './localize';
 import styles from './styles.css';
 import buildConfig from './config';
 import { DreamyCardConfig } from './types';
-
-registerTemplates();
 
 // Rollup will replace string on the right side
 const PKG_VERSION = 'PKG_VERSION_VALUE';
@@ -50,10 +47,6 @@ export class DreamyCard extends LitElement {
     this.config = buildConfig(config);
   }
 
-  public getCardSize(): number {
-    return this.config.compact_view ? 3 : 8;
-  }
-
   public shouldUpdate(changedProps: PropertyValues): boolean {
     return hasConfigOrEntityChanged(this, changedProps, false);
   }
@@ -63,6 +56,8 @@ export class DreamyCard extends LitElement {
   }
 
   private getUnit(): string {
+    const custom = this.config.unit?.trim();
+    if (custom) return custom;
     const u = this.hass.states[this.config.entity]?.attributes
       ?.unit_of_measurement;
     return typeof u === 'string' && u.length ? u : '';
