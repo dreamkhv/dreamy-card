@@ -1,81 +1,14 @@
 {
-  "status": {
-    "cleaning": "Limpando",
-    "auto": "Limpeza automática",
-    "spot": "Limpeza localizada",
-    "edge": "Limpeza de bordas",
-    "single_room": "Limpeza de um único cômodo",
-    "paused": "Em pausa",
-    "idle": "Ocioso",
-    "stop": "Parado",
-    "charging": "Carregando",
-    "returning": "Retornando à base",
-    "returning_home": "Retornando à base",
-    "docked": "Na base",
-    "unknown": "Desconhecido",
-    "offline": "Fora de linha",
-    "error": "Erro",
-    "charger_disconnected": "Carregador desconectado",
-    "remote_control_active": "Controle remoto ativo",
-    "manual_mode": "Modo manual",
-    "shutting_down": "Desligando",
-    "updating": "Atualizando",
-    "going_to_target": "Indo ao destino",
-    "zoned_cleaning": "Limpeza por zonas",
-    "segment_cleaning": "Limpeza por segmentos"
-  },
-  "source": {
-    "gentle": "Delicado",
-    "silent": "Silencioso",
-    "standard": "Padrão",
-    "medium": "Médio",
-    "turbo": "Turbo",
-    "normal": "Normal",
-    "max": "Máx.",
-    "max_plus": "Máx.+",
-    "high": "Alto",
-    "strong": "Forte",
-    "quiet": "Silencioso",
-    "auto": "Automático",
-    "balanced": "Equilibrado",
-    "custom": "Personalizado",
-    "off": "Desligado"
-  },
   "common": {
     "name": "Cartão do aspirador",
     "description": "O cartão do aspirador permite controlar o robô aspirador.",
-    "start": "Limpar",
-    "continue": "Continuar",
-    "pause": "Pausa",
-    "stop": "Parar",
-    "return_to_base": "Retornar à base",
-    "locate": "Localizar aspirador",
     "not_available": "O aspirador não está disponível"
   },
   "error": {
     "invalid_config": "Configuração inválida",
     "missing_entity": "Entidade obrigatória"
   },
-  "warning": {
-    "actions_array": "AVISO: 'actions' são reservadas para substituir as ações padrões para botões existentes. Se sua intenção era adicionar ações adicionais, use a opção 'shortcuts'."
-  },
   "editor": {
-    "entity": "Entidade (Obrigatória)",
-    "battery_entity": "Entidade da bateria (Opcional)",
-    "map": "Mapa (Opcional)",
-    "image": "Imagem (Opcional)",
-    "compact_view": "Vista Compacta",
-    "compact_view_aria_label_on": "Ativar visualização compacta",
-    "compact_view_aria_label_off": "Desativar visualização compacta",
-    "show_name": "Mostrar nome",
-    "show_name_aria_label_on": "Mostrar nome",
-    "show_name_aria_label_off": "Ocultar nome",
-    "show_status": "Mostrar estado",
-    "show_status_aria_label_on": "Mostrar estado",
-    "show_status_aria_label_off": "Ocultar estado",
-    "show_toolbar": "Mostrar barra de ferramentas",
-    "show_toolbar_aria_label_on": "Mostrar barra de ferramentas",
-    "show_toolbar_aria_label_off": "Ocultar barra de ferramentas",
-    "code_only_note": "Nota: Ações e estatísticas estão disponiveis exclusivamente usando o editor de código."
+    "entity": "Entidade"
   }
 }
