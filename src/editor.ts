@@ -49,24 +49,14 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
     return html`
       <div class="card-config">
         <div class="option">
-          <ha-select
+          <ha-entity-picker
+            .hass=${this.hass}
             .label=${localize('editor.entity')}
-            @selected=${this.valueChanged}
+            .value=${this.config.entity ?? ''}
             .configValue=${'entity'}
-            .value=${this.config.entity}
-            @closed=${(e: Event) => e.stopPropagation()}
-            fixedMenuPosition
-            naturalMenuWidth
             required
-            validationMessage=${localize('error.missing_entity')}
-          >
-            ${entities.map(
-              (entity) =>
-                html` <mwc-list-item .value=${entity}
-                  >${entity}</mwc-list-item
-                >`,
-            )}
-          </ha-select>
+            @value-changed=${this.valueChanged}
+          ></ha-entity-picker>
         </div>
 
         <div class="option">
@@ -99,7 +89,6 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
   }
 
   private valueChanged(event: Event): void {
-    console.log('valueChanged', event);
     if (!this.config || !this.hass || !event.target) {
       return;
     }
