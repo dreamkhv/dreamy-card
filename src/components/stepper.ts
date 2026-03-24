@@ -28,7 +28,7 @@ export class Stepper extends LitElement {
     };
 
     return html`
-          <div class="number-input">
+          <div class="stepper">
             <div class="label-wrap">
               ${this.icon 
                 ? html`

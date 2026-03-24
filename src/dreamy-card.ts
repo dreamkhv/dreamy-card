@@ -1,4 +1,5 @@
 import './components/stepper';
+import './components/switcher';
 import { LitElement, html, nothing, TemplateResult } from 'lit';
 import type { CSSResultGroup, PropertyValues } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -97,6 +98,11 @@ export class DreamyCard extends LitElement {
             .value=${this.get()}
             .onChange=${this.onChange}
           ></ds-stepper>
+
+          <ds-switcher
+            label="${this.getLabel()}"
+            icon="${this.getIcon()}"
+          ></ds-switcher>
         </div>
       </ha-card>
     `;
