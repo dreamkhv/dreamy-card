@@ -29,8 +29,8 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
     }
 
     const modes = [
-      { id: 'switcher', name: 'Переключатель' },
       { id: 'stepper', name: 'Счётчик' },
+      { id: 'switcher', name: 'Переключатель' },
     ];
 
     return html`
@@ -117,9 +117,5 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
       }
     }
     fireEvent(this, 'config-changed', { config: this.config });
-  }
-
-  static get styles() {
-    return styles;
   }
 }

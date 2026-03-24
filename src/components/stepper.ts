@@ -27,14 +27,16 @@ export class Stepper extends LitElement {
     };
 
     return html`
+      <ha-card>
+        <div class="preview card-content">
           <div class="stepper">
             <div class="label-wrap">
-              ${this.icon 
+              ${this.icon
                 ? html`
                   <div class="label-icon-circle" aria-hidden="true">
                     <ha-icon icon=${this.icon}></ha-icon>
                   </div>
-                ` 
+                `
                 : nothing}
               <span class="label">${this.label}</span>
             </div>
@@ -61,6 +63,8 @@ export class Stepper extends LitElement {
               </button>
             </div>
           </div>
+        </div>
+      </ha-card>
     `;
   }
 }

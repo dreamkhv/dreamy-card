@@ -1,13 +1,13 @@
+import './components/state';
 import './components/stepper';
 import './components/switcher';
-import { LitElement, html, TemplateResult } from 'lit';
+import { LitElement, html, nothing, TemplateResult } from 'lit';
 import type { CSSResultGroup, PropertyValues } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { hasConfigOrEntityChanged, HomeAssistant } from 'custom-card-helpers';
 import localize from './localize';
-import styles from './css/styles.css';
 import buildConfig from './config';
-import { DreamyCardConfig } from './types';
+import { DreamyCardConfig, Template } from './types';
 
 // Rollup will replace string on the right side
 const PKG_VERSION = 'PKG_VERSION_VALUE';
@@ -24,21 +24,9 @@ export class DreamyCard extends LitElement {
   @state() private config!: DreamyCardConfig;
   @state() private switchChecked = false;
 
-  static get styles(): CSSResultGroup {
-    return styles;
-  }
-
   public static async getConfigElement() {
     await import('./editor');
     return document.createElement('dreamy-card-editor');
-  }
-
-  static getStubConfig(_: unknown, entities: string[]) {
-    const [vacuumEntity] = entities.filter((eid) => eid.startsWith('vacuum'));
-
-    return {
-      entity: vacuumEntity ?? '',
-    };
   }
 
   public setConfig(config: DreamyCardConfig): void {
@@ -54,6 +42,7 @@ export class DreamyCard extends LitElement {
   }
 
   private getUnit(): string {
+    console.log(this.hass.states[this.config.entity]?.attributes);
     const custom = this.config.unit?.trim();
     if (custom) return custom;
     const u = this.hass.states[this.config.entity]?.attributes
@@ -87,31 +76,40 @@ export class DreamyCard extends LitElement {
     this.switchChecked = e.detail.checked;
   };
 
-  protected render(): TemplateResult {
-    const icon = this.getIcon() ?? '';
+  protected render(): Template {
+    switch (this.config.mode) {
+      case 'stepper':
+        return this.stepper();
+      case 'switcher':
+        return this.switcher();
+      default:
+        return nothing;
+    }
+  }
 
+  private stepper(): TemplateResult {
     return html`
-      <ha-card>
-        <div class="preview card-content">
-          <ds-stepper
-            min="1"
-            max="60"
-            step="1"
-            label="${this.getLabel()}"
-            .icon=${icon}
-            unit="${this.getUnit()}"
-            .value=${this.get()}
-            .onChange=${this.onChange}
-          ></ds-stepper>
+      <ds-stepper
+        min="1"
+        max="60"
+        step="1"
+        label="${this.getLabel()}"
+        .icon=${this.getIcon()}
+        unit="${this.getUnit()}"
+        .value=${this.get()}
+        .onChange=${this.onChange}
+      ></ds-stepper>
+    `;
+  }
 
-          <ds-switcher
-            label="${this.getLabel()}"
-            .icon=${icon}
-            .checked=${this.switchChecked}
-            @change=${this.onSwitchChange}
-          ></ds-switcher>
-        </div>
-      </ha-card>
+  private switcher(): TemplateResult {
+    return html`
+      <ds-switcher
+        label="${this.getLabel()}"
+        .icon=${this.getIcon()}
+        .checked=${this.switchChecked}
+        @change=${this.onSwitchChange}
+      ></ds-switcher>
     `;
   }
 }
