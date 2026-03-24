@@ -17,23 +17,10 @@ type ConfigElement = HTMLInputElement & {
 @customElement('dreamy-card-editor')
 export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
   @property({ attribute: false }) public hass?: HomeAssistant;
-
   @state() private config!: Partial<DreamyCardConfig>;
 
   setConfig(config: LovelaceCardConfig & DreamyCardConfig): void {
     this.config = config;
-
-    if (!this.config.entity) {
-      this.config.entity = this.getEntitiesByType('input_number')[0] || '';
-      fireEvent(this, 'config-changed', { config: this.config });
-    }
-  }
-
-  private getEntitiesByType(type: string): string[] {
-    if (!this.hass) {
-      return [];
-    }
-    return Object.keys(this.hass.states).filter((id) => id.startsWith(type));
   }
 
   protected render(): Template {
