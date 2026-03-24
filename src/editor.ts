@@ -28,8 +28,31 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
       return nothing;
     }
 
+    const modes = [
+      { id: 'switcher', name: 'Переключатель' },
+      { id: 'stepper', name: 'Счётчик' },
+    ];
+
     return html`
       <div class="card-config">
+        <div class="option">
+          <ha-selector
+            .hass=${this.hass}
+            .selector=${{
+              select: {
+                mode: 'dropdown',
+                options: modes.map(m => ({
+                  label: m.name,
+                  value: m.id
+                }))
+              }
+            }}
+            .value=${this.config.mode}
+            .label=${localize('editor.type')}
+            @value-changed=${this.valueChanged}
+          ></ha-selector>
+        </div>
+        
         <div class="option">
           <ha-selector
             .hass=${this.hass}

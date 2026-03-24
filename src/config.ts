@@ -13,6 +13,7 @@ export default function buildConfig(
   }
 
   return {
+    mode: config.mode ?? 'number-stepper',
     entity: config.entity,
     icon: (config.icon ?? '').trim(),
     name: (config.name ?? '').trim(),
