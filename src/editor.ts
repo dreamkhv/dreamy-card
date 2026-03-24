@@ -67,23 +67,6 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
             @input=${this.valueChanged}
           ></ha-textfield>
         </div>
-
-        <div class="option">
-          <ha-switch
-            aria-label=${localize(
-              this.compact_view
-                ? 'editor.compact_view_aria_label_off'
-                : 'editor.compact_view_aria_label_on',
-            )}
-            .checked=${Boolean(this.compact_view)}
-            .configValue=${'compact_view'}
-            @change=${this.valueChanged}
-          >
-          </ha-switch>
-          ${localize('editor.compact_view')}
-        </div>
-
-        <strong>${localize('editor.code_only_note')}</strong>
       </div>
     `;
   }
