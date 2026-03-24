@@ -8,7 +8,7 @@ import {
 import localize from './localize';
 import { customElement, property, state } from 'lit/decorators.js';
 import { Template, DreamyCardConfig } from './types';
-import styles from './editor.css';
+import styles from './css/editor.css';
 
 type ConfigElement = HTMLInputElement & {
   configValue?: keyof DreamyCardConfig;
