@@ -1,6 +1,6 @@
 import './components/stepper';
 import './components/switcher';
-import { LitElement, html, nothing, TemplateResult } from 'lit';
+import { LitElement, html, TemplateResult } from 'lit';
 import type { CSSResultGroup, PropertyValues } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { hasConfigOrEntityChanged, HomeAssistant } from 'custom-card-helpers';
@@ -22,6 +22,7 @@ console.info(
 export class DreamyCard extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private config!: DreamyCardConfig;
+  @state() private switchChecked = false;
 
   static get styles(): CSSResultGroup {
     return styles;
@@ -82,8 +83,12 @@ export class DreamyCard extends LitElement {
     });
   };
 
+  private onSwitchChange = (e: CustomEvent<{ checked: boolean }>): void => {
+    this.switchChecked = e.detail.checked;
+  };
+
   protected render(): TemplateResult {
-    const icon = this.getIcon();
+    const icon = this.getIcon() ?? '';
 
     return html`
       <ha-card>
@@ -93,7 +98,7 @@ export class DreamyCard extends LitElement {
             max="60"
             step="1"
             label="${this.getLabel()}"
-            icon="${this.getIcon()}"
+            .icon=${icon}
             unit="${this.getUnit()}"
             .value=${this.get()}
             .onChange=${this.onChange}
@@ -101,7 +106,9 @@ export class DreamyCard extends LitElement {
 
           <ds-switcher
             label="${this.getLabel()}"
-            icon="${this.getIcon()}"
+            .icon=${icon}
+            .checked=${this.switchChecked}
+            @change=${this.onSwitchChange}
           ></ds-switcher>
         </div>
       </ha-card>

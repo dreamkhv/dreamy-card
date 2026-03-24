@@ -130,4 +130,8 @@ ha-icon {
 
 .preview.card-content {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
 }

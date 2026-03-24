@@ -1,5 +1,4 @@
-import { css, type CSSResultGroup, html, LitElement, nothing, TemplateResult } from 'lit';
-import { Template } from '../types';
+import { type CSSResultGroup, html, LitElement, nothing, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import styles from '../css/stepper.css';
 
