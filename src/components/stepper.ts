@@ -1,10 +1,10 @@
 import { css, type CSSResultGroup, html, LitElement, nothing, TemplateResult } from 'lit';
 import { Template } from '../types';
 import { customElement, property } from 'lit/decorators.js';
-import styles from '../css/number-input.css';
+import styles from '../css/stepper.css';
 
-@customElement('ds-number-input')
-export class NumberInput extends LitElement {
+@customElement('ds-stepper')
+export class Stepper extends LitElement {
   @property({ type: Number }) public min: number = 0;
   @property({ type: Number }) public max: number = 100;
   @property({ type: Number }) public step: number = 1;

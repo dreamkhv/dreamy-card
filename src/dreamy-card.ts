@@ -1,4 +1,4 @@
-import './components/number-input';
+import './components/stepper';
 import { LitElement, html, nothing, TemplateResult } from 'lit';
 import type { CSSResultGroup, PropertyValues } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -87,7 +87,7 @@ export class DreamyCard extends LitElement {
     return html`
       <ha-card>
         <div class="preview card-content">
-          <ds-number-input
+          <ds-stepper
             min="1"
             max="60"
             step="1"
@@ -96,7 +96,7 @@ export class DreamyCard extends LitElement {
             unit="${this.getUnit()}"
             .value=${this.get()}
             .onChange=${this.onChange}
-          ></ds-number-input>
+          ></ds-stepper>
         </div>
       </ha-card>
     `;
