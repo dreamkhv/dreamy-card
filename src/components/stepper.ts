@@ -40,7 +40,7 @@ export class Stepper extends LitElement {
 
     return html`
       <ha-card>
-        <div class="preview card-content">
+        <div class="card-content">
           <div class="stepper">
             <div class="label-wrap">
               <div class="label-icon-circle" aria-hidden="true">

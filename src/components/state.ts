@@ -19,7 +19,7 @@ export class State extends LitElement {
 
     return html`
       <ha-card>
-        <div class="preview card-content">
+        <div class="card-content">
           <div class="state">
             <div class="label-wrap">
               ${icon
