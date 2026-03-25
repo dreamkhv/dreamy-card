@@ -33,6 +33,7 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
     }
 
     const modes = [
+      { id: 'state', name: 'Состояние' },
       { id: 'stepper', name: 'Счётчик' },
       { id: 'switcher', name: 'Переключатель' },
     ];
