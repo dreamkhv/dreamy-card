@@ -54,6 +54,7 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
             }}
             .value=${this.config.mode}
             .label=${localize('editor.type')}
+            .configValue=${'mode'}
             @value-changed=${this.valueChanged}
           ></ha-selector>
         </div>
@@ -99,28 +100,30 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
     `;
   }
 
-  private valueChanged(event: Event): void {
+  private valueChanged(event: CustomEvent): void {
     if (!this.config || !this.hass || !event.target) {
       return;
     }
+
     const target = event.target as ConfigElement;
-    if (
-      !target.configValue ||
-      this.config[target.configValue] === target?.value
-    ) {
+    const value = event.detail?.value ?? (target.checked !== undefined ? target.checked : target.value);
+
+    if (!target.configValue || this.config[target.configValue] === value) {
       return;
     }
+
     if (target.configValue) {
-      if (target.value === '') {
+      if (value === '' || value === undefined) {
+        const config = { ...this.config };
         delete this.config[target.configValue];
+        this.config = config;
       } else {
-        this.config = {
-          ...this.config,
-          [target.configValue]:
-            target.checked !== undefined ? target.checked : target.value,
+        this.config = { ...this.config,
+          [target.configValue]: value,
         };
       }
     }
+
     fireEvent(this, 'config-changed', { config: this.config });
   }
 }
