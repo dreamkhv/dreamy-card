@@ -21,7 +21,6 @@ function isEntityStateOn(state: string | undefined): boolean {
 @customElement('ds-switcher')
 export class Switcher extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
-
   @property({ attribute: false }) public config!: DreamyCardConfig;
 
   static get styles(): CSSResultGroup {
