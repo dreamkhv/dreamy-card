@@ -32,16 +32,8 @@ export class State extends LitElement {
     return typeof raw === 'string' && raw.trim().length ? raw.trim() : undefined;
   }
 
-  private getUnit(): string {
-    const c = this.config.unit?.trim();
-    if (c) return c;
-    const u = this.getStateObj()?.attributes?.unit_of_measurement;
-    return typeof u === 'string' && u.length ? u : '';
-  }
-
   public render(): TemplateResult {
     const icon = this.getIcon();
-    const unit = this.getUnit();
 
     return html`
       <ha-card>
@@ -59,9 +51,6 @@ export class State extends LitElement {
             </div>
             <div class="state-aside" aria-label=${`State: ${st.state}`}>
               <span class="state-value">${st.state}</span>
-              ${unit
-                ? html`<span class="state-unit">${unit}</span>`
-                : nothing}
             </div>
           </div>
         </div>
