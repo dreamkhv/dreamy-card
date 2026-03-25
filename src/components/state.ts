@@ -16,6 +16,7 @@ export class State extends LitElement {
   public render(): TemplateResult {
     const icon = this.hass.states[this.config.entity]?.attributes?.icon;
     const label = this.config.name ?? this.hass.states[this.config.entity]?.attributes?.friendly_name;
+    const state = this.hass.states[this.config.entity].state;
 
     return html`
       <ha-card>
