@@ -4,7 +4,7 @@ import { HomeAssistant } from 'custom-card-helpers';
 import styles from '../css/state.css';
 import { DreamyCardConfig } from '../types';
 
-@customElement('ds-state')
+@customElement('ds-state2')
 export class State extends LitElement {
   @property() public hass!: HomeAssistant;
   @property() public config!: DreamyCardConfig;

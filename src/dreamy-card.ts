@@ -13,12 +13,12 @@ import { DreamyCardConfig, Template } from './types';
 const PKG_VERSION = 'PKG_VERSION_VALUE';
 
 console.info(
-  `%c DREAMY-CARD %c ${PKG_VERSION}`,
+  `%c DREAMY-CARD2 %c ${PKG_VERSION}`,
   'color: white; background: blue; font-weight: 700;',
   'color: blue; background: white; font-weight: 700;',
 );
 
-@customElement('dreamy-card')
+@customElement('dreamy-card2')
 export class DreamyCard extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private config!: DreamyCardConfig;
@@ -51,28 +51,28 @@ export class DreamyCard extends LitElement {
 
   private state(): TemplateResult {
     return html`
-      <ds-state
+      <ds-state2
         .hass=${this.hass}
         .config=${this.config}
-      ></ds-state>
+      ></ds-state2>
     `;
   }
 
   private stepper(): TemplateResult {
     return html`
-      <ds-stepper
+      <ds-stepper2
         .hass=${this.hass}
         .config=${this.config}
-      ></ds-stepper>
+      ></ds-stepper2>
     `;
   }
 
   private switcher(): TemplateResult {
     return html`
-      <ds-switcher
+      <ds-switcher2
         .hass=${this.hass}
         .config=${this.config}
-      ></ds-switcher>
+      ></ds-switcher2>
     `;
   }
 }
@@ -86,7 +86,7 @@ declare global {
 window.customCards = window.customCards || [];
 window.customCards.push({
   preview: true,
-  type: 'dreamy-card',
+  type: 'dreamy-card2',
   name: localize('common.name'),
   description: localize('common.description'),
 });

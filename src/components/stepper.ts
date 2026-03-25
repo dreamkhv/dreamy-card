@@ -4,7 +4,7 @@ import { HomeAssistant } from 'custom-card-helpers';
 import styles from '../css/stepper.css';
 import { DreamyCardConfig } from '../types';
 
-@customElement('ds-stepper')
+@customElement('ds-stepper2')
 export class Stepper extends LitElement {
   @property() public hass!: HomeAssistant;
   @property() public config!: DreamyCardConfig;
