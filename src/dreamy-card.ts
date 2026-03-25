@@ -22,7 +22,6 @@ console.info(
 export class DreamyCard extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private config!: DreamyCardConfig;
-  @state() private switchChecked = false;
 
   public static async getConfigElement() {
     await import('./editor');
@@ -36,10 +35,6 @@ export class DreamyCard extends LitElement {
   public shouldUpdate(changedProps: PropertyValues): boolean {
     return hasConfigOrEntityChanged(this, changedProps, false);
   }
-
-  private onSwitchChange = (e: CustomEvent<{ checked: boolean }>): void => {
-    this.switchChecked = e.detail.checked;
-  };
 
   protected render(): Template {
     switch (this.config.mode) {
