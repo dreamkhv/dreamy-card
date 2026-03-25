@@ -40,19 +40,6 @@ export class State extends LitElement {
   }
 
   public render(): TemplateResult {
-    const st = this.getStateObj();
-    if (!st) {
-      return html`
-        <ha-card>
-          <div class="preview card-content">
-            <div class="state">
-              <span class="label">${this.config.entity}</span>
-            </div>
-          </div>
-        </ha-card>
-      `;
-    }
-
     const icon = this.getIcon();
     const unit = this.getUnit();
 
