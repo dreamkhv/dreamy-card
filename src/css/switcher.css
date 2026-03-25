@@ -114,21 +114,11 @@ ha-card:hover {
   }
 }
 
-.not-available .offline {
-  text-align: center;
-  color: var(--vc-primary-text-color);
-  font-size: 16px;
-}
-
-.metadata {
-  margin: var(--vc-spacing) auto;
-}
-
 ha-icon {
   color: var(--vc-icon-color);
 }
 
-.preview.card-content {
+.card-content {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
