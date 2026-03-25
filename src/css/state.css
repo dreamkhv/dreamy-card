@@ -136,7 +136,7 @@ ha-icon {
     width: 100%;
 }
 
-.stepper {
+.state {
     display: flex;
     align-items: center;
     justify-content: space-between;

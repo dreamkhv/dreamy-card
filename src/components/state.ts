@@ -1,36 +1,39 @@
 import { type CSSResultGroup, html, LitElement, nothing, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { HomeAssistant } from 'custom-card-helpers';
 import styles from '../css/state.css';
+import { DreamyCardConfig } from '../types';
 
 @customElement('ds-state')
 export class State extends LitElement {
-  @property({ type: Number }) public min: number = 0;
-  @property({ type: Number }) public max: number = 100;
-  @property({ type: Number }) public step: number = 1;
-  @property({ type: String }) public unit: string = '';
-  @property({ type: String }) public icon: string = '';
-  @property({ type: String }) public label: string = '';
-  @property({ type: Number }) public value: number = 10;
-  @property({ type: Function }) public onChange: (value: number) => void = () => {};
+  @property() public hass!: HomeAssistant;
+  @property() public config!: DreamyCardConfig;
 
   static get styles(): CSSResultGroup {
     return styles;
   }
 
   public render(): TemplateResult {
+    const icon = this.hass.states[this.config.entity]?.attributes?.icon;
+    const label = this.config.name ?? this.hass.states[this.config.entity]?.attributes?.friendly_name;
+
     return html`
+      <ha-card>
+        <div class="preview card-content">
           <div class="state">
             <div class="label-wrap">
-              ${this.icon 
+              ${icon
                 ? html`
                   <div class="label-icon-circle" aria-hidden="true">
-                    <ha-icon icon=${this.icon}></ha-icon>
+                    <ha-icon icon=${icon}></ha-icon>
                   </div>
-                ` 
+                `
                 : nothing}
-              <span class="label">${this.label}</span>
+              <span class="label">${label}</span>
             </div>
           </div>
+        </div>
+      </ha-card>
     `;
   }
 }

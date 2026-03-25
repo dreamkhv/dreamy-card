@@ -43,6 +43,8 @@ export class DreamyCard extends LitElement {
 
   protected render(): Template {
     switch (this.config.mode) {
+      case 'state':
+        return this.state();
       case 'stepper':
         return this.stepper();
       case 'switcher':
@@ -50,6 +52,15 @@ export class DreamyCard extends LitElement {
       default:
         return nothing;
     }
+  }
+
+  private state(): TemplateResult {
+    return html`
+      <ds-state
+        .hass=${this.hass}
+        .config=${this.config}
+      ></ds-state>
+    `;
   }
 
   private stepper(): TemplateResult {
