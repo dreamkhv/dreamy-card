@@ -22,7 +22,7 @@ export class Stepper extends LitElement {
 
   public render(): TemplateResult {
     const icon = this.hass.states[this.config.entity]?.attributes?.icon;
-    const label = this.hass.states[this.config.entity]?.attributes?.friendly_name;
+    const label = this.config.name ?? this.hass.states[this.config.entity]?.attributes?.friendly_name;
     const max = this.hass.states[this.config.entity]?.attributes?.max;
     const min = this.hass.states[this.config.entity]?.attributes?.min;
     const step = this.hass.states[this.config.entity]?.attributes?.step;

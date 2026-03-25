@@ -23,6 +23,10 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
     this.config = config;
   }
 
+  static get styles() {
+    return styles;
+  }
+
   protected render(): Template {
     if (!this.hass || !this.config) {
       return nothing;

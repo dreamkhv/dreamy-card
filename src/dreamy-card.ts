@@ -64,10 +64,8 @@ export class DreamyCard extends LitElement {
   private switcher(): TemplateResult {
     return html`
       <ds-switcher
-        label=''
-        .icon=''
-        .checked=${this.switchChecked}
-        @change=${this.onSwitchChange}
+        .hass=${this.hass}
+        .config=${this.config}
       ></ds-switcher>
     `;
   }
