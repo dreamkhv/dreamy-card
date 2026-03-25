@@ -6,8 +6,8 @@ import { DreamyCardConfig } from '../types';
 
 @customElement('ds-stepper2')
 export class Stepper extends LitElement {
-  @property() public hass!: HomeAssistant;
-  @property() public config!: DreamyCardConfig;
+  @property({ attribute: false }) public hass!: HomeAssistant;
+  @property({ attribute: false }) public config!: DreamyCardConfig;
 
   static get styles(): CSSResultGroup {
     return styles;

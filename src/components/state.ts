@@ -6,8 +6,8 @@ import { DreamyCardConfig } from '../types';
 
 @customElement('ds-state2')
 export class State extends LitElement {
-  @property() public hass!: HomeAssistant;
-  @property() public config!: DreamyCardConfig;
+  @property({ attribute: false }) public hass!: HomeAssistant;
+  @property({ attribute: false }) public config!: DreamyCardConfig;
 
   static get styles(): CSSResultGroup {
     return styles;
