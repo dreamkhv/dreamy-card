@@ -1,4 +1,4 @@
-import { type CSSResultGroup, html, LitElement, nothing, TemplateResult } from 'lit';
+import { type CSSResultGroup, html, LitElement, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { HomeAssistant } from 'custom-card-helpers';
 import styles from '../css/stepper.css';

@@ -172,6 +172,35 @@ ha-icon {
         white-space: nowrap;
     }
 
+    .state-aside {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-end;
+        gap: 4px;
+        flex-shrink: 0;
+        max-width: 50%;
+        text-align: right;
+    }
+
+    .state-value {
+        font-size: 15px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        color: var(--vc-primary-text-color);
+        line-height: 1.2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .state-unit {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--vc-secondary-text-color);
+        line-height: 1.2;
+        flex-shrink: 0;
+    }
+
     .control-row {
         display: flex;
         align-items: center;

@@ -2,7 +2,7 @@ import './components/state';
 import './components/stepper';
 import './components/switcher';
 import { LitElement, html, nothing, TemplateResult } from 'lit';
-import type { CSSResultGroup, PropertyValues } from 'lit';
+import type { PropertyValues } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { hasConfigOrEntityChanged, HomeAssistant } from 'custom-card-helpers';
 import localize from './localize';

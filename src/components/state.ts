@@ -13,24 +13,68 @@ export class State extends LitElement {
     return styles;
   }
 
+  private getStateObj() {
+    return this.hass?.states[this.config.entity];
+  }
+
+  private getLabel(): string {
+    const n = this.config.name?.trim();
+    if (n) return n;
+    const fn = this.getStateObj()?.attributes?.friendly_name;
+    if (typeof fn === 'string' && fn.length) return fn;
+    return this.config.entity;
+  }
+
+  private getIcon(): string | undefined {
+    const c = this.config.icon?.trim();
+    if (c) return c;
+    const raw = this.getStateObj()?.attributes?.icon;
+    return typeof raw === 'string' && raw.trim().length ? raw.trim() : undefined;
+  }
+
+  private getUnit(): string {
+    const c = this.config.unit?.trim();
+    if (c) return c;
+    const u = this.getStateObj()?.attributes?.unit_of_measurement;
+    return typeof u === 'string' && u.length ? u : '';
+  }
+
   public render(): TemplateResult {
-    const icon = this.hass.states[this.config.entity]?.attributes?.icon;
-    const label = this.config.name ?? this.hass.states[this.config.entity]?.attributes?.friendly_name;
-    const state = this.hass.states[this.config.entity].state;
+    const st = this.getStateObj();
+    if (!st) {
+      return html`
+        <ha-card>
+          <div class="preview card-content">
+            <div class="state">
+              <span class="label">${this.config.entity}</span>
+            </div>
+          </div>
+        </ha-card>
+      `;
+    }
+
+    const icon = this.getIcon();
+    const unit = this.getUnit();
 
     return html`
       <ha-card>
-        <div class="card-content">
+        <div class="preview card-content">
           <div class="state">
             <div class="label-wrap">
               ${icon
                 ? html`
-                  <div class="label-icon-circle" aria-hidden="true">
-                    <ha-icon icon=${icon}></ha-icon>
-                  </div>
-                `
+                    <div class="label-icon-circle" aria-hidden="true">
+                      <ha-icon icon=${icon}></ha-icon>
+                    </div>
+                  `
                 : nothing}
-              <span class="label">${label}</span>
+              <span class="label">${this.getLabel()}</span>
+            </div>
+            <div class="state-aside" aria-label=${`State: ${st.state}`}>
+              <span class="state-value">${st.state}</span>
+              ${unit
+                ? html`<span class="state-unit">${unit}</span>`
+                : nothing}
             </div>
           </div>
         </div>
