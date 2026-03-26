@@ -16,7 +16,28 @@ export class HomeAssistantService {
     return this.config.icon ?? this.hass.states[this.config.entity]?.attributes.icon;
   }
 
-  public getValue(): string {
+  public getMax(): number {
+    return +this.hass.states[this.config.entity]?.attributes.max;
+  }
+
+  public getMin(): number {
+    return +this.hass.states[this.config.entity]?.attributes.min;
+  }
+
+  public getStep(): number {
+    return +this.hass.states[this.config.entity]?.attributes.step;
+  }
+
+  public getUnit(): string | undefined{
+    return this.config.unit ?? this.hass.states[this.config.entity]?.attributes.unit_of_measurement;
+  }
+
+
+  public getState(): string {
     return this.hass.states[this.config.entity]?.state ?? '';
+  }
+
+  public getNumberState(): number {
+    return +this.hass.states[this.config.entity]?.state;
   }
 }

@@ -19,17 +19,12 @@ export class Stepper extends CardComponent {
   };
 
   public template(service: HomeAssistantService): Template {
-    const max = this.hass.states[this.config.entity]?.attributes?.max;
-    const min = this.hass.states[this.config.entity]?.attributes?.min;
-    const step = this.hass.states[this.config.entity]?.attributes?.step;
-    const unit = this.hass.states[this.config.entity]?.attributes?.unit_of_measurement;
-
     const handleDecrement = () => {
-      this.onChange(Math.max(min, +service.getValue() - step));
+      this.onChange(Math.max(service.getMin(), service.getNumberState() - service.getStep()));
     };
 
     const handleIncrement = () => {
-      this.onChange(Math.min(max, +service.getValue() + step));
+      this.onChange(Math.min(service.getMax(), service.getNumberState() + service.getStep()));
     };
 
     return html`
@@ -47,20 +42,14 @@ export class Stepper extends CardComponent {
               <span class="label">${service.getLabel()}</span>
             </div>
             <div class="control-row">
-              <button
-                class="button"
-                @click=${handleDecrement}
-              >
+              <button class="button" @click=${handleDecrement}>
                 <ha-icon icon="mdi:minus"></ha-icon>
               </button>
               <div class="value-wrap">
-                <span class="value">${service.getValue()}</span>
-                <span class="unit">${unit}</span>
+                <span class="value">${service.getNumberState()}</span>
+                <span class="unit">${service.getUnit()}</span>
               </div>
-              <button
-                class="button"
-                @click=${handleIncrement}
-              >
+              <button class="button" @click=${handleIncrement}>
                 <ha-icon icon="mdi:plus"></ha-icon>
               </button>
             </div>

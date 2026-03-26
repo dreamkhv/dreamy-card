@@ -27,7 +27,7 @@ export class State extends CardComponent {
               <span class="label">${service.getLabel()}</span>
             </div>
             <div class="state-aside">
-              <span class="state-value">${service.getValue()}</span>
+              <span class="state-value">${service.getState()}</span>
             </div>
           </div>
         </div>
