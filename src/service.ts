@@ -37,6 +37,10 @@ export class HomeAssistantService {
     return this.hass.states[this.config.entity]?.state ?? '';
   }
 
+  public getBooleanState(): boolean {
+    return this.hass.states[this.config.entity]?.state === 'on';
+  }
+
   public getNumberState(): number {
     return +this.hass.states[this.config.entity]?.state;
   }

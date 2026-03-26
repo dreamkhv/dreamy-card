@@ -1,103 +1,51 @@
-import { type CSSResultGroup, html, LitElement, nothing, TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { HomeAssistant } from 'custom-card-helpers';
+import { type CSSResultGroup, html, nothing } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import styles from '../css/switcher.css';
-import { DreamyCardConfig } from '../types';
-
-function isEntityStateOn(state: string | undefined): boolean {
-  if (state === undefined) return false;
-  return (
-    state === 'on' ||
-    state === 'home' ||
-    state === 'open' ||
-    state === 'unlocked' ||
-    state === 'playing' ||
-    state === 'active' ||
-    state === 'True' ||
-    state === 'true'
-  );
-}
+import { Template } from '../types';
+import { CardComponent } from './card-component';
+import { HomeAssistantService } from '../service';
 
 @customElement('ds-switcher2')
-export class Switcher extends LitElement {
-  @property({ attribute: false }) public hass!: HomeAssistant;
-  @property({ attribute: false }) public config!: DreamyCardConfig;
-
+export class Switcher extends CardComponent {
   static get styles(): CSSResultGroup {
     return styles;
   }
 
-  private getStateObj() {
-    return this.hass?.states[this.config.entity];
-  }
-
-  private getLabel(): string {
-    const n = this.config.name?.trim();
-    if (n) return n;
-    const fn = this.getStateObj()?.attributes?.friendly_name;
-    if (typeof fn === 'string' && fn.length) return fn;
-    return this.config.entity;
-  }
-
-  private getIcon(): string | undefined {
-    const c = this.config.icon?.trim();
-    if (c) return c;
-    const raw = this.getStateObj()?.attributes?.icon;
-    return typeof raw === 'string' && raw.trim().length ? raw.trim() : undefined;
-  }
-
-  private isUnavailable(): boolean {
-    const s = this.getStateObj()?.state;
-    return s === undefined || s === 'unavailable' || s === 'unknown';
-  }
-
-  private isOn(): boolean {
-    return isEntityStateOn(this.getStateObj()?.state);
-  }
-
-  private toggle = async (): Promise<void> => {
-    if (this.isUnavailable()) return;
-    const wasOn = this.isOn();
+  private toggle = async (state: boolean): Promise<void> => {
     await this.hass.callService('homeassistant', 'toggle', {
       entity_id: this.config.entity,
     });
-    this.dispatchEvent(
-      new CustomEvent('change', {
-        detail: { checked: !wasOn },
-        bubbles: true,
-        composed: true,
-      }),
-    );
+
+    this.dispatchEvent(new CustomEvent('change', {
+      detail: { checked: !state },
+      bubbles: true,
+      composed: true,
+    }));
   };
 
-  protected render(): TemplateResult {
-    const icon = this.getIcon();
-    const label = this.getLabel();
-    const on = this.isOn();
-    const disabled = this.isUnavailable();
+  public template(service: HomeAssistantService): Template {
+    const state = service.getBooleanState();
 
     return html`
       <ha-card>
         <div class="preview card-content">
           <div class="switcher">
             <div class="label-wrap">
-              ${icon
+              ${service.getIcon()
                 ? html`
                     <div class="label-icon-circle" aria-hidden="true">
-                      <ha-icon icon=${icon}></ha-icon>
+                      <ha-icon icon=${service.getIcon()}></ha-icon>
                     </div>
                   `
                 : nothing}
-              <span class="label">${label}</span>
+              <span class="label">${service.getLabel()}</span>
             </div>
-            <button
-              type="button"
-              class="toggle"
-              role="switch"
-              aria-checked=${on ? 'true' : 'false'}
-              aria-label=${label || 'Toggle'}
-              ?disabled=${disabled}
-              @click=${this.toggle}
+            <button 
+              type="button" 
+              class="toggle" 
+              role="switch" 
+              aria-checked=${state ? 'true' : 'false'} 
+              @click=${() => this.toggle(state)}
             >
               <span class="toggle-track">
                 <span class="toggle-thumb"></span>
