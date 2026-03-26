@@ -1,7 +1,7 @@
 import { type CSSResultGroup, html, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 import styles from '../css/state.css';
-import { DreamyCardConfig, Template } from '../types';
+import { Template } from '../types';
 import { CardComponent } from './card-component';
 import { HomeAssistantService } from '../service';
 
