@@ -2,11 +2,11 @@ import { type CSSResultGroup, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import styles from '../css/state.css';
 import { DreamyCardConfig, Template } from '../types';
-import { CardElement } from './card-element';
+import { CardComponent } from './card-component';
 import { HomeAssistantService } from '../service';
 
 @customElement('ds-state2')
-export class State extends CardElement {
+export class State extends CardComponent {
   static get styles(): CSSResultGroup {
     return styles;
   }
