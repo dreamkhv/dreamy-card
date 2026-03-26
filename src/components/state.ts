@@ -1,56 +1,33 @@
-import { type CSSResultGroup, html, LitElement, nothing, TemplateResult } from 'lit';
+import { type CSSResultGroup, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { HomeAssistant } from 'custom-card-helpers';
 import styles from '../css/state.css';
-import { DreamyCardConfig } from '../types';
+import { DreamyCardConfig, Template } from '../types';
+import { CardElement } from '../card-element';
+import { HomeAssistantService } from '../service';
 
 @customElement('ds-state2')
-export class State extends LitElement {
-  @property({ attribute: false }) public hass!: HomeAssistant;
-  @property({ attribute: false }) public config!: DreamyCardConfig;
-
+export class State extends CardElement {
   static get styles(): CSSResultGroup {
     return styles;
   }
 
-  private getStateObj() {
-    return this.hass?.states[this.config.entity];
-  }
-
-  private getLabel(): string {
-    const n = this.config.name?.trim();
-    if (n) return n;
-    const fn = this.getStateObj()?.attributes?.friendly_name;
-    if (typeof fn === 'string' && fn.length) return fn;
-    return this.config.entity;
-  }
-
-  private getIcon(): string | undefined {
-    const c = this.config.icon?.trim();
-    if (c) return c;
-    const raw = this.getStateObj()?.attributes?.icon;
-    return typeof raw === 'string' && raw.trim().length ? raw.trim() : undefined;
-  }
-
-  public render(): TemplateResult {
-    const icon = this.getIcon();
-
+  protected template(service: HomeAssistantService): Template {
     return html`
       <ha-card>
         <div class="preview card-content">
           <div class="state">
             <div class="label-wrap">
-              ${icon
+              ${service.getIcon()
                 ? html`
-                    <div class="label-icon-circle" aria-hidden="true">
-                      <ha-icon icon=${icon}></ha-icon>
-                    </div>
-                  `
+                  <div class="label-icon-circle" aria-hidden="true">
+                    <ha-icon icon=${service.getIcon()}></ha-icon>
+                  </div>
+                `
                 : nothing}
-              <span class="label">${this.getLabel()}</span>
+              <span class="label">${service.getLabel()}</span>
             </div>
-            <div class="state-aside" aria-label=${`State: ${st.state}`}>
-              <span class="state-value">${st.state}</span>
+            <div class="state-aside">
+              <span class="state-value">${service.getValue()}</span>
             </div>
           </div>
         </div>
