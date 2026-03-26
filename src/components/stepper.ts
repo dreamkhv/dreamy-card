@@ -1,14 +1,12 @@
-import { type CSSResultGroup, html, LitElement, TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { HomeAssistant } from 'custom-card-helpers';
+import { type CSSResultGroup, html, nothing } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import styles from '../css/stepper.css';
-import { DreamyCardConfig } from '../types';
+import { CardComponent } from './card-component';
+import { HomeAssistantService } from '../service';
+import { Template } from '../types';
 
 @customElement('ds-stepper2')
-export class Stepper extends LitElement {
-  @property({ attribute: false }) public hass!: HomeAssistant;
-  @property({ attribute: false }) public config!: DreamyCardConfig;
-
+export class Stepper extends CardComponent {
   static get styles(): CSSResultGroup {
     return styles;
   }
@@ -20,22 +18,18 @@ export class Stepper extends LitElement {
     });
   };
 
-  public render(): TemplateResult {
-    const icon = this.hass.states[this.config.entity]?.attributes?.icon;
-    const label = this.config.name ?? this.hass.states[this.config.entity]?.attributes?.friendly_name;
+  public template(service: HomeAssistantService): Template {
     const max = this.hass.states[this.config.entity]?.attributes?.max;
     const min = this.hass.states[this.config.entity]?.attributes?.min;
     const step = this.hass.states[this.config.entity]?.attributes?.step;
     const unit = this.hass.states[this.config.entity]?.attributes?.unit_of_measurement;
-    const value = +this.hass.states[this.config.entity].state;
-
 
     const handleDecrement = () => {
-      this.onChange(Math.max(min, value - step));
+      this.onChange(Math.max(min, +service.getValue() - step));
     };
 
     const handleIncrement = () => {
-      this.onChange(Math.min(max, value + step));
+      this.onChange(Math.min(max, +service.getValue() + step));
     };
 
     return html`
@@ -43,25 +37,27 @@ export class Stepper extends LitElement {
         <div class="card-content">
           <div class="stepper">
             <div class="label-wrap">
-              <div class="label-icon-circle" aria-hidden="true">
-                <ha-icon icon=${icon}></ha-icon>
-              </div>
-              <span class="label">${label}</span>
+              ${service.getIcon()
+                ? html`
+                  <div class="label-icon-circle" aria-hidden="true">
+                    <ha-icon icon=${service.getIcon()}></ha-icon>
+                  </div>
+                `
+                : nothing}
+              <span class="label">${service.getLabel()}</span>
             </div>
             <div class="control-row">
               <button
-                type="button"
                 class="button"
                 @click=${handleDecrement}
               >
                 <ha-icon icon="mdi:minus"></ha-icon>
               </button>
               <div class="value-wrap">
-                <span class="value">${value}</span>
+                <span class="value">${service.getValue()}</span>
                 <span class="unit">${unit}</span>
               </div>
               <button
-                type="button"
                 class="button"
                 @click=${handleIncrement}
               >

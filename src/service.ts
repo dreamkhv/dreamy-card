@@ -16,7 +16,7 @@ export class HomeAssistantService {
     return this.config.icon ?? this.hass.states[this.config.entity]?.attributes.icon;
   }
 
-  public getValue(): string | undefined {
-    return this.hass.states[this.config.entity]?.state;
+  public getValue(): string {
+    return this.hass.states[this.config.entity]?.state ?? '';
   }
 }
