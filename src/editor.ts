@@ -87,15 +87,6 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
             @input=${this.valueChanged}
           ></ha-textfield>
         </div>
-
-        <div class="option">
-          <ha-textfield
-            label="${localize('editor.unit')}"
-            .value=${this.config.unit ?? ''}
-            .configValue=${'unit'}
-            @input=${this.valueChanged}
-          ></ha-textfield>
-        </div>
       </div>
     `;
   }

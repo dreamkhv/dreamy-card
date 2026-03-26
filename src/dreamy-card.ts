@@ -25,7 +25,7 @@ export class DreamyCard extends LitElement {
 
   public static async getConfigElement() {
     await import('./editor');
-    return document.createElement('dreamy-card-editor');
+    return document.createElement('dreamy-card-editor2');
   }
 
   public setConfig(config: DreamyCardConfig): void {
