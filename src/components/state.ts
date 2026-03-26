@@ -2,7 +2,7 @@ import { type CSSResultGroup, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import styles from '../css/state.css';
 import { DreamyCardConfig, Template } from '../types';
-import { CardElement } from '../card-element';
+import { CardElement } from './card-element';
 import { HomeAssistantService } from '../service';
 
 @customElement('ds-state2')
