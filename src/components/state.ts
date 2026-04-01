@@ -11,23 +11,23 @@ export class State extends CardComponent {
     return styles;
   }
 
-  protected template(service: HomeAssistantService): Template {
+  protected template(s: HomeAssistantService): Template {
     return html`
       <ha-card>
         <div class="preview card-content">
           <div class="state">
             <div class="label-wrap">
-              ${service.getIcon()
+              ${s.getIcon()
                 ? html`
-                  <div class="label-icon-circle" aria-hidden="true">
-                    <ha-icon icon=${service.getIcon()}></ha-icon>
-                  </div>
-                `
+                    <div class="label-icon-circle" aria-hidden="true">
+                      <ha-icon icon=${s.getIcon()}></ha-icon>
+                    </div>
+                  `
                 : nothing}
-              <span class="label">${service.getLabel()}</span>
+              <span class="label">${s.getLabel()}</span>
             </div>
             <div class="state-aside">
-              <span class="state-value">${service.getState()}</span>
+              <span class="state-value">${s.getState()}</span>
             </div>
           </div>
         </div>

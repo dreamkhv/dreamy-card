@@ -21,5 +21,5 @@ export abstract class CardComponent extends LitElement {
     return service ? this.template(service) : nothing;
   }
 
-  protected abstract template(service: HomeAssistantService): Template;
+  protected abstract template(s: HomeAssistantService): Template;
 }

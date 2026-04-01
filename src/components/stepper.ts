@@ -18,13 +18,13 @@ export class Stepper extends CardComponent {
     });
   };
 
-  public template(service: HomeAssistantService): Template {
+  public template(s: HomeAssistantService): Template {
     const handleDecrement = () => {
-      this.onChange(Math.max(service.getMin(), service.getNumberState() - service.getStep()));
+      this.onChange(Math.max(s.getMin(), s.getNumberState() - s.getStep()));
     };
 
     const handleIncrement = () => {
-      this.onChange(Math.min(service.getMax(), service.getNumberState() + service.getStep()));
+      this.onChange(Math.min(s.getMax(), s.getNumberState() + s.getStep()));
     };
 
     return html`
@@ -32,22 +32,22 @@ export class Stepper extends CardComponent {
         <div class="card-content">
           <div class="stepper">
             <div class="label-wrap">
-              ${service.getIcon()
+              ${s.getIcon()
                 ? html`
-                  <div class="label-icon-circle" aria-hidden="true">
-                    <ha-icon icon=${service.getIcon()}></ha-icon>
-                  </div>
-                `
+                    <div class="label-icon-circle" aria-hidden="true">
+                      <ha-icon icon=${s.getIcon()}></ha-icon>
+                    </div>
+                  `
                 : nothing}
-              <span class="label">${service.getLabel()}</span>
+              <span class="label">${s.getLabel()}</span>
             </div>
             <div class="control-row">
               <button class="button" @click=${handleDecrement}>
                 <ha-icon icon="mdi:minus"></ha-icon>
               </button>
               <div class="value-wrap">
-                <span class="value">${service.getNumberState()}</span>
-                <span class="unit">${service.getUnit()}</span>
+                <span class="value">${s.getNumberState()}</span>
+                <span class="unit">${s.getUnit()}</span>
               </div>
               <button class="button" @click=${handleIncrement}>
                 <ha-icon icon="mdi:plus"></ha-icon>

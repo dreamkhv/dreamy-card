@@ -16,35 +16,37 @@ export class Switcher extends CardComponent {
       entity_id: this.config.entity,
     });
 
-    this.dispatchEvent(new CustomEvent('change', {
-      detail: { checked: !state },
-      bubbles: true,
-      composed: true,
-    }));
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: { checked: !state },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   };
 
-  public template(service: HomeAssistantService): Template {
-    const state = service.getBooleanState();
+  public template(s: HomeAssistantService): Template {
+    const state = s.getBooleanState();
 
     return html`
       <ha-card>
         <div class="preview card-content">
           <div class="switcher">
             <div class="label-wrap">
-              ${service.getIcon()
+              ${s.getIcon()
                 ? html`
                     <div class="label-icon-circle" aria-hidden="true">
-                      <ha-icon icon=${service.getIcon()}></ha-icon>
+                      <ha-icon icon=${s.getIcon()}></ha-icon>
                     </div>
                   `
                 : nothing}
-              <span class="label">${service.getLabel()}</span>
+              <span class="label">${s.getLabel()}</span>
             </div>
-            <button 
-              type="button" 
-              class="toggle" 
-              role="switch" 
-              aria-checked=${state ? 'true' : 'false'} 
+            <button
+              type="button"
+              class="toggle"
+              role="switch"
+              aria-checked=${state ? 'true' : 'false'}
               @click=${() => this.toggle(state)}
             >
               <span class="toggle-track">
