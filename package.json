@@ -34,7 +34,7 @@
   "license": "MIT",
   "dependencies": {
     "custom-card-helpers": "^2.0.0",
-    "ha-template": "^1.4.0",
+    "ha-template": "^1.4.1",
     "home-assistant-js-websocket": "^9.6.0",
     "lit": "^3.3.2",
     "lodash": "^4.17.21"
@@ -57,10 +57,10 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
-    "globals": "^17.0.0",
+    "globals": "^17.4.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "postcss": "^8.5.6",
+    "lint-staged": "^16.3.3",
+    "postcss": "^8.5.8",
     "postcss-preset-env": "^11.2.0",
     "prettier": "^3.7.4",
     "rollup": "^4.59.0",
