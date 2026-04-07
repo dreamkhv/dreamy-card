@@ -14,7 +14,8 @@ export class State extends CardComponent {
   protected template(s: HomeAssistantService): Template {
     return html`
       <ha-card>
-        <div class="preview card-content">
+        <ha-ripple></ha-ripple>
+        <div class="card-content">
           <div class="state">
             <div class="label-wrap">
               ${s.getIcon()

@@ -1,7 +1,7 @@
 :host {
   --vc-background: var(
-          --ha-card-background,
-          var(--card-background-color, transparent)
+    --ha-card-background,
+    var(--card-background-color, transparent)
   );
   --vc-primary-text-color: var(--primary-text-color);
   --vc-secondary-text-color: var(--secondary-text-color);
@@ -34,15 +34,6 @@ ha-card:hover {
   background: var(--vc-background);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
-}
-
-.preview {
-  position: relative;
-  text-align: center;
-
-  &.not-available {
-    filter: grayscale(1);
-  }
 }
 
 @keyframes cleaning {

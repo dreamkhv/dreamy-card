@@ -9,6 +9,7 @@ import localize from './localize';
 import { customElement, property, state } from 'lit/decorators.js';
 import { Template, DreamyCardConfig } from './types';
 import styles from './css/editor.css';
+import { modes } from './modes';
 
 type ConfigElement = HTMLInputElement & {
   configValue?: keyof DreamyCardConfig;
@@ -32,11 +33,7 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
       return nothing;
     }
 
-    const modes = [
-      { id: 'state', name: 'Состояние' },
-      { id: 'stepper', name: 'Счётчик' },
-      { id: 'switcher', name: 'Переключатель' },
-    ];
+    const mode = modes.findOneByName(String(this.config.mode));
 
     return html`
       <div class="card-config">
@@ -46,23 +43,23 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
             .selector=${{
               select: {
                 mode: 'dropdown',
-                options: modes.map(m => ({
+                options: modes.all().map((m) => ({
                   label: m.name,
-                  value: m.id
-                }))
-              }
+                  value: m.id,
+                })),
+              },
             }}
-            .value=${this.config.mode}
+            .value=${mode.name}
             .label=${localize('editor.type')}
             .configValue=${'mode'}
             @value-changed=${this.valueChanged}
           ></ha-selector>
         </div>
-        
+
         <div class="option">
           <ha-selector
             .hass=${this.hass}
-            .selector=${{ entity: {} }}
+            .selector=${{ entity: { domain: mode.domains } }}
             .value=${this.config.entity ?? ''}
             .configValue=${'entity'}
             @value-changed=${this.valueChanged}
@@ -97,7 +94,9 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
     }
 
     const target = event.target as ConfigElement;
-    const value = event.detail?.value ?? (target.checked !== undefined ? target.checked : target.value);
+    const value =
+      event.detail?.value ??
+      (target.checked !== undefined ? target.checked : target.value);
 
     if (!target.configValue || this.config[target.configValue] === value) {
       return;
@@ -109,9 +108,7 @@ export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
         delete this.config[target.configValue];
         this.config = config;
       } else {
-        this.config = { ...this.config,
-          [target.configValue]: value,
-        };
+        this.config = { ...this.config, [target.configValue]: value };
       }
     }
 

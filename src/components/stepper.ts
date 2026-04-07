@@ -29,6 +29,7 @@ export class Stepper extends CardComponent {
 
     return html`
       <ha-card>
+        <ha-ripple></ha-ripple>
         <div class="card-content">
           <div class="stepper">
             <div class="label-wrap">

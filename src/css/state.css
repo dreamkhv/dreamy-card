@@ -1,257 +1,248 @@
 :host {
-    --vc-background: var(
-            --ha-card-background,
-            var(--card-background-color, transparent)
-    );
-    --vc-primary-text-color: var(--primary-text-color);
-    --vc-secondary-text-color: var(--secondary-text-color);
-    --vc-icon-color: var(--secondary-text-color);
-    --vc-toolbar-background: transparent;
-    --vc-toolbar-text-color: var(--secondary-text-color);
-    --vc-toolbar-icon-color: var(--secondary-text-color);
-    --vc-divider-color: var(--entities-divider-color, var(--divider-color));
-    --vc-spacing: 10px;
+  --vc-background: var(
+    --ha-card-background,
+    var(--card-background-color, transparent)
+  );
+  --vc-primary-text-color: var(--primary-text-color);
+  --vc-secondary-text-color: var(--secondary-text-color);
+  --vc-icon-color: var(--secondary-text-color);
+  --vc-toolbar-background: transparent;
+  --vc-toolbar-text-color: var(--secondary-text-color);
+  --vc-toolbar-icon-color: var(--secondary-text-color);
+  --vc-divider-color: var(--entities-divider-color, var(--divider-color));
+  --vc-spacing: 10px;
 
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 ha-card {
-    --ha-card-background: var(--vc-background);
-    background: var(--vc-background);
-    border: none;
-    box-shadow: none;
-    transition: none;
-    flex-direction: column;
-    flex: 1;
-    position: relative;
-    overflow: hidden;
+  --ha-card-background: var(--vc-background);
+  background: var(--vc-background);
+  border: none;
+  box-shadow: none;
+  transition: none;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
 }
 
 ha-card:hover {
-    --ha-card-background: var(--vc-background);
-    background: var(--vc-background);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-}
-
-.preview {
-    position: relative;
-    text-align: center;
-
-    &.not-available {
-        filter: grayscale(1);
-    }
+  --ha-card-background: var(--vc-background);
+  background: var(--vc-background);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 @keyframes cleaning {
-    0% {
-        transform: rotate(0) translate(0);
-    }
-    5% {
-        transform: rotate(0) translate(0, -10px);
-    }
-    10% {
-        transform: rotate(0) translate(0, 5px);
-    }
-    15% {
-        transform: rotate(0) translate(0);
-    }
-    /* Turn left */
-    20% {
-        transform: rotate(30deg) translate(0);
-    }
-    25% {
-        transform: rotate(30deg) translate(0, -10px);
-    }
-    30% {
-        transform: rotate(30deg) translate(0, 5px);
-    }
-    35% {
-        transform: rotate(30deg) translate(0);
-    }
-    40% {
-        transform: rotate(0) translate(0);
-    }
-    /* Turn right */
-    45% {
-        transform: rotate(-30deg) translate(0);
-    }
-    50% {
-        transform: rotate(-30deg) translate(0, -10px);
-    }
-    55% {
-        transform: rotate(-30deg) translate(0, 5px);
-    }
-    60% {
-        transform: rotate(-30deg) translate(0);
-    }
-    70% {
-        transform: rotate(0deg) translate(0);
-    }
-    /* Staying still */
-    100% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0) translate(0);
+  }
+  5% {
+    transform: rotate(0) translate(0, -10px);
+  }
+  10% {
+    transform: rotate(0) translate(0, 5px);
+  }
+  15% {
+    transform: rotate(0) translate(0);
+  }
+  /* Turn left */
+  20% {
+    transform: rotate(30deg) translate(0);
+  }
+  25% {
+    transform: rotate(30deg) translate(0, -10px);
+  }
+  30% {
+    transform: rotate(30deg) translate(0, 5px);
+  }
+  35% {
+    transform: rotate(30deg) translate(0);
+  }
+  40% {
+    transform: rotate(0) translate(0);
+  }
+  /* Turn right */
+  45% {
+    transform: rotate(-30deg) translate(0);
+  }
+  50% {
+    transform: rotate(-30deg) translate(0, -10px);
+  }
+  55% {
+    transform: rotate(-30deg) translate(0, 5px);
+  }
+  60% {
+    transform: rotate(-30deg) translate(0);
+  }
+  70% {
+    transform: rotate(0deg) translate(0);
+  }
+  /* Staying still */
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes returning {
-    0% {
-        transform: rotate(0);
-    }
-    25% {
-        transform: rotate(10deg);
-    }
-    50% {
-        transform: rotate(0);
-    }
-    75% {
-        transform: rotate(-10deg);
-    }
-    100% {
-        transform: rotate(0);
-    }
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
 }
 
 ha-icon {
-    color: var(--vc-icon-color);
+  color: var(--vc-icon-color);
 }
 
 .card-content {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
 }
 
 .state {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+
+  .label-wrap {
+    flex: 1;
+    min-width: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 0;
-    text-align: left;
-    width: 100%;
+    gap: 8px;
+  }
+
+  .label-icon-circle {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
     box-sizing: border-box;
 
-    .label-wrap {
-        flex: 1;
-        min-width: 0;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+    & ha-icon {
+      --mdc-icon-size: 20px;
+      color: var(--vc-primary-text-color);
+    }
+  }
+
+  .label {
+    min-width: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--vc-primary-text-color);
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .state-aside {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+    max-width: 50%;
+    text-align: right;
+  }
+
+  .state-value {
+    font-size: 15px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--vc-primary-text-color);
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .state-unit {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--vc-secondary-text-color);
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  .control-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .value-wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    min-width: 3ch;
+  }
+
+  .value {
+    font-size: 14px;
+    color: var(--vc-primary-text-color);
+    line-height: 1;
+  }
+
+  .unit {
+    font-size: 12px;
+    color: var(--vc-secondary-text-color);
+    line-height: 1;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    & ha-icon {
+      --mdc-icon-size: 20px;
+      color: var(--vc-primary-text-color);
     }
 
-    .label-icon-circle {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        box-sizing: border-box;
-
-        & ha-icon {
-            --mdc-icon-size: 20px;
-            color: var(--vc-primary-text-color);
-        }
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
-    .label {
-        min-width: 0;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--vc-primary-text-color);
-        line-height: 1.2;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+    &:active {
+      background: rgba(255, 255, 255, 0.3);
     }
-
-    .state-aside {
-        display: flex;
-        align-items: baseline;
-        justify-content: flex-end;
-        gap: 4px;
-        flex-shrink: 0;
-        max-width: 50%;
-        text-align: right;
-    }
-
-    .state-value {
-        font-size: 15px;
-        font-weight: 600;
-        font-variant-numeric: tabular-nums;
-        color: var(--vc-primary-text-color);
-        line-height: 1.2;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .state-unit {
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--vc-secondary-text-color);
-        line-height: 1.2;
-        flex-shrink: 0;
-    }
-
-    .control-row {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 8px;
-        flex-shrink: 0;
-    }
-
-    .value-wrap {
-        display: flex;
-        align-items: baseline;
-        justify-content: center;
-        gap: 4px;
-        min-width: 3ch;
-    }
-
-    .value {
-        font-size: 14px;
-        color: var(--vc-primary-text-color);
-        line-height: 1;
-    }
-
-    .unit {
-        font-size: 12px;
-        color: var(--vc-secondary-text-color);
-        line-height: 1;
-    }
-
-    .button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        border: none;
-        background: rgba(255, 255, 255, 0.1);
-        cursor: pointer;
-        transition: background 0.2s ease;
-
-        & ha-icon {
-            --mdc-icon-size: 20px;
-            color: var(--vc-primary-text-color);
-        }
-
-        &:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        &:active {
-            background: rgba(255, 255, 255, 0.3);
-        }
-    }
+  }
 }

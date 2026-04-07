@@ -30,7 +30,8 @@ export class Switcher extends CardComponent {
 
     return html`
       <ha-card>
-        <div class="preview card-content">
+        <ha-ripple></ha-ripple>
+        <div class="card-content">
           <div class="switcher">
             <div class="label-wrap">
               ${s.getIcon()
