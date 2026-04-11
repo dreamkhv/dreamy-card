@@ -1,8 +1,8 @@
 class CardModes {
   private modes: CardMode[] = [
-    { id: 'state', name: 'Состояние', domains: ['sensor'] },
-    { id: 'stepper', name: 'Счётчик', domains: ['input_number'] },
-    { id: 'switcher', name: 'Переключатель', domains: ['switch'] },
+    { domains: ['sensor'], id: 'state', name: 'Состояние' },
+    { domains: ['input_number'], id: 'stepper', name: 'Счётчик' },
+    { domains: ['switch'], id: 'switcher', name: 'Переключатель' },
   ];
 
   public all(): CardMode[] {

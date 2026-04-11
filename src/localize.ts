@@ -3,6 +3,7 @@
 
 // Sorted alphabetically
 import * as ca from './translations/ca.json';
+// eslint-disable-next-line import/no-duplicates
 import * as cn from './translations/cn.json';
 import * as cs from './translations/cs.json';
 import * as da from './translations/da.json';
@@ -29,6 +30,7 @@ import * as sv from './translations/sv.json';
 import * as tw from './translations/tw.json';
 import * as uk from './translations/uk.json';
 import * as vi from './translations/vi.json';
+// eslint-disable-next-line import/no-duplicates
 import * as zh from './translations/cn.json';
 
 type Translations = {

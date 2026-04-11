@@ -1,7 +1,9 @@
 import localize from './localize';
 import { DreamyCardConfig } from './types';
 
-export default function buildConfig(config?: Partial<DreamyCardConfig>): DreamyCardConfig {
+export default function buildConfig(
+  config?: Partial<DreamyCardConfig>,
+): DreamyCardConfig {
   if (!config) {
     throw new Error(localize('error.invalid_config'));
   }
@@ -11,10 +13,10 @@ export default function buildConfig(config?: Partial<DreamyCardConfig>): DreamyC
   }
 
   return {
-    mode: config.mode ?? 'state',
     entity: config.entity,
     icon: config.icon,
+    mode: config.mode ?? 'state',
     name: config.name,
-    unit: config.unit
+    unit: config.unit,
   };
 }

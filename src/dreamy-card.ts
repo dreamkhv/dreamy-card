@@ -1,10 +1,18 @@
 import './components/state';
 import './components/stepper';
 import './components/switcher';
-import { LitElement, html, nothing, TemplateResult } from 'lit';
-import type { PropertyValues } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
-import { hasConfigOrEntityChanged, HomeAssistant } from 'custom-card-helpers';
+import {
+  LitElement,
+  html,
+  nothing,
+  type TemplateResult,
+  type PropertyValues,
+} from 'lit';
+import { customElement, property, state } from 'lit/decorators';
+import {
+  hasConfigOrEntityChanged,
+  type HomeAssistant,
+} from 'custom-card-helpers';
 import localize from './localize';
 import buildConfig from './config';
 import { DreamyCardConfig, Template } from './types';
@@ -51,28 +59,19 @@ export class DreamyCard extends LitElement {
 
   private state(): TemplateResult {
     return html`
-      <ds-state2
-        .hass=${this.hass}
-        .config=${this.config}
-      ></ds-state2>
+      <ds-state2 .hass=${this.hass} .config=${this.config}></ds-state2>
     `;
   }
 
   private stepper(): TemplateResult {
     return html`
-      <ds-stepper2
-        .hass=${this.hass}
-        .config=${this.config}
-      ></ds-stepper2>
+      <ds-stepper2 .hass=${this.hass} .config=${this.config}></ds-stepper2>
     `;
   }
 
   private switcher(): TemplateResult {
     return html`
-      <ds-switcher2
-        .hass=${this.hass}
-        .config=${this.config}
-      ></ds-switcher2>
+      <ds-switcher2 .hass=${this.hass} .config=${this.config}></ds-switcher2>
     `;
   }
 }
@@ -85,8 +84,8 @@ declare global {
 
 window.customCards = window.customCards || [];
 window.customCards.push({
+  description: localize('common.description'),
+  name: localize('common.name'),
   preview: true,
   type: 'dreamy-card2',
-  name: localize('common.name'),
-  description: localize('common.description'),
 });

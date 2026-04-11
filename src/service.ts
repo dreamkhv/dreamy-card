@@ -1,6 +1,5 @@
 import { DreamyCardConfig } from './types';
-import { HomeAssistant } from 'custom-card-helpers';
-import { HassEntity } from 'home-assistant-js-websocket/dist/types';
+import { type HomeAssistant } from 'custom-card-helpers';
 
 export class HomeAssistantService {
   constructor(
@@ -9,11 +8,16 @@ export class HomeAssistantService {
   ) {}
 
   public getLabel(): string | undefined {
-    return this.config.name ?? this.hass.states[this.config.entity]?.attributes.friendly_name;
+    return (
+      this.config.name ??
+      this.hass.states[this.config.entity]?.attributes.friendly_name
+    );
   }
 
   public getIcon(): string | undefined {
-    return this.config.icon ?? this.hass.states[this.config.entity]?.attributes.icon;
+    return (
+      this.config.icon ?? this.hass.states[this.config.entity]?.attributes.icon
+    );
   }
 
   public getMax(): number {
@@ -28,10 +32,12 @@ export class HomeAssistantService {
     return +this.hass.states[this.config.entity]?.attributes.step;
   }
 
-  public getUnit(): string | undefined{
-    return this.config.unit ?? this.hass.states[this.config.entity]?.attributes.unit_of_measurement;
+  public getUnit(): string | undefined {
+    return (
+      this.config.unit ??
+      this.hass.states[this.config.entity]?.attributes.unit_of_measurement
+    );
   }
-
 
   public getState(): string {
     return this.hass.states[this.config.entity]?.state ?? '';

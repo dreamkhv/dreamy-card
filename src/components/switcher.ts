@@ -18,9 +18,9 @@ export class Switcher extends CardComponent {
 
     this.dispatchEvent(
       new CustomEvent('change', {
-        detail: { checked: !state },
         bubbles: true,
         composed: true,
+        detail: { checked: !state },
       }),
     );
   };

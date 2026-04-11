@@ -1,8 +1,8 @@
 import { LitElement, html, nothing } from 'lit';
 import {
-  HomeAssistant,
-  LovelaceCardConfig,
-  LovelaceCardEditor,
+  type HomeAssistant,
+  type LovelaceCardConfig,
+  type LovelaceCardEditor,
   fireEvent,
 } from 'custom-card-helpers';
 import localize from './localize';
