@@ -1,15 +1,16 @@
-import { LitElement, html, nothing } from 'lit';
 import {
+  fireEvent,
   type HomeAssistant,
   type LovelaceCardConfig,
   type LovelaceCardEditor,
-  fireEvent,
 } from 'custom-card-helpers';
-import localize from './localize';
+import { html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { Template, DreamyCardConfig } from './types';
+
 import styles from './css/editor.css';
+import localize from './localize';
 import { modes } from './modes';
+import { DreamyCardConfig, Template } from './types';
 
 type ConfigElement = HTMLInputElement & {
   configValue?: keyof DreamyCardConfig;

@@ -1,5 +1,6 @@
-import { DreamyCardConfig } from './types';
 import { type HomeAssistant } from 'custom-card-helpers';
+
+import { DreamyCardConfig } from './types';
 
 export class HomeAssistantService {
   constructor(

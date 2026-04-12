@@ -1,4 +1,4 @@
-import { type TemplateResult, nothing } from 'lit';
+import { nothing, type TemplateResult } from 'lit';
 
 export * from 'home-assistant-js-websocket';
 

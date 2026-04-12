@@ -1,20 +1,22 @@
 import './components/state';
 import './components/stepper';
 import './components/switcher';
-import {
-  LitElement,
-  html,
-  nothing,
-  type TemplateResult,
-  type PropertyValues,
-} from 'lit';
-import { customElement, property, state } from 'lit/decorators';
+
 import {
   hasConfigOrEntityChanged,
   type HomeAssistant,
 } from 'custom-card-helpers';
-import localize from './localize';
+import {
+  html,
+  LitElement,
+  nothing,
+  type PropertyValues,
+  type TemplateResult,
+} from 'lit';
+import { customElement, property, state } from 'lit/decorators';
+
 import buildConfig from './config';
+import localize from './localize';
 import { DreamyCardConfig, Template } from './types';
 
 // Rollup will replace string on the right side

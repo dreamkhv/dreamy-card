@@ -1,9 +1,10 @@
 import { type CSSResultGroup, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
+
 import styles from '../css/stepper.css';
-import { CardComponent } from './card-component';
 import { HomeAssistantService } from '../service';
 import { Template } from '../types';
+import { CardComponent } from './card-component';
 
 @customElement('ds-stepper2')
 export class Stepper extends CardComponent {

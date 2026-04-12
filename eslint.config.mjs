@@ -1,10 +1,11 @@
-import { defineConfig } from 'eslint/config';
-import globals from 'globals';
-import tsParser from '@typescript-eslint/parser';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import importPlugin from 'eslint-plugin-import';
 import js from '@eslint/js';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import { defineConfig } from 'eslint/config';
+import importPlugin from 'eslint-plugin-import';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sortKeysFix from 'eslint-plugin-sort-keys-fix';
+import globals from 'globals';
 
 export default defineConfig([
   {
@@ -18,12 +19,15 @@ export default defineConfig([
     plugins: {
       '@typescript-eslint': tsPlugin,
       import: importPlugin,
+      'simple-import-sort': simpleImportSort,
       'sort-keys-fix': sortKeysFix,
     },
     rules: {
       ...js.configs.recommended.rules,
       ...tsPlugin.configs.recommended.rules,
       ...importPlugin.configs.recommended.rules,
+      'simple-import-sort/exports': 'error',
+      'simple-import-sort/imports': 'error',
       'sort-keys-fix/sort-keys-fix': [
         'error',
         'asc',

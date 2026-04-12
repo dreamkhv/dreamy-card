@@ -1,8 +1,9 @@
+import { type HomeAssistant } from 'custom-card-helpers';
 import { LitElement, nothing } from 'lit';
 import { property } from 'lit/decorators';
-import { DreamyCardConfig, Template } from '../types';
+
 import { HomeAssistantService } from '../service';
-import { type HomeAssistant } from 'custom-card-helpers';
+import { DreamyCardConfig, Template } from '../types';
 
 export abstract class CardComponent extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
