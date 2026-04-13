@@ -1,6 +1,6 @@
 import { type HomeAssistant } from 'custom-card-helpers';
 import { LitElement, nothing } from 'lit';
-import { property } from 'lit/decorators';
+import { property } from 'lit/decorators.js';
 
 import { HomeAssistantService } from '../service';
 import { DreamyCardConfig, Template } from '../types';

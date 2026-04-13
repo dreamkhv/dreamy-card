@@ -42,6 +42,7 @@ export default defineConfig([
         node: {
           extensions: ['.js', '.ts', '.tsx'],
         },
+        typescript: true,
       },
     },
   },

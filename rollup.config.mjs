@@ -1,18 +1,19 @@
 /*  eslint-env node */
 import { createRequire } from 'node:module';
-import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
-import json from '@rollup/plugin-json';
-import typescript from 'rollup-plugin-typescript2';
+
 import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
 import image from '@rollup/plugin-image';
-import postcss from 'rollup-plugin-postcss';
-import postcssPresetEnv from 'postcss-preset-env';
-import postcssLit from 'rollup-plugin-postcss-lit';
-import terser from '@rollup/plugin-terser';
-import minifyLiterals from 'rollup-plugin-minify-html-literals-v3';
+import json from '@rollup/plugin-json';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import terser from '@rollup/plugin-terser';
+import postcssPresetEnv from 'postcss-preset-env';
+import minifyLiterals from 'rollup-plugin-minify-html-literals-v3';
+import postcss from 'rollup-plugin-postcss';
+import postcssLit from 'rollup-plugin-postcss-lit';
 import serve from 'rollup-plugin-serve';
+import typescript from 'rollup-plugin-typescript2';
 
 const require = createRequire(import.meta.url);
 const pkg = require('./package.json');
@@ -20,13 +21,13 @@ const pkg = require('./package.json');
 const IS_DEV = process.env.ROLLUP_WATCH;
 
 const serverOptions = {
-  contentBase: ['./dist'],
-  host: 'localhost',
-  port: 5000,
   allowCrossOrigin: true,
+  contentBase: ['./dist'],
   headers: {
     'Access-Control-Allow-Origin': '*',
   },
+  host: 'localhost',
+  port: 5000,
 };
 
 const plugins = [
@@ -34,21 +35,21 @@ const plugins = [
   commonjs(),
   json(),
   replace({
+    preventAssignment: true,
     values: {
       PKG_VERSION_VALUE: IS_DEV ? 'DEVELOPMENT' : pkg.version,
     },
-    preventAssignment: true,
   }),
   postcss({
+    extract: false,
     plugins: [
       postcssPresetEnv({
-        stage: 1,
         features: {
           'nesting-rules': true,
         },
+        stage: 1,
       }),
     ],
-    extract: false,
   }),
   postcssLit(),
   image(),
@@ -61,20 +62,20 @@ const plugins = [
   !IS_DEV && minifyLiterals(),
   !IS_DEV &&
     terser({
-      maxWorkers: 1,
       format: {
         comments: false,
       },
+      maxWorkers: 1,
     }),
 ].filter(Boolean);
 
 export default {
+  context: 'window',
   input: 'src/dreamy-card.ts',
   output: {
-    dir: 'dist',
+    dir: '/Volumes/config/www/development',
     format: 'es',
     inlineDynamicImports: true,
   },
-  context: 'window',
   plugins,
 };

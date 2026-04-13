@@ -13,7 +13,7 @@ import {
   type PropertyValues,
   type TemplateResult,
 } from 'lit';
-import { customElement, property, state } from 'lit/decorators';
+import { customElement, property, state } from 'lit/decorators.js';
 
 import buildConfig from './config';
 import localize from './localize';
@@ -28,14 +28,14 @@ console.info(
   'color: blue; background: white; font-weight: 700;',
 );
 
-@customElement('dreamy-card2')
+@customElement('dreamy-card')
 export class DreamyCard extends LitElement {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @state() private config!: DreamyCardConfig;
 
   public static async getConfigElement() {
     await import('./editor');
-    return document.createElement('dreamy-card-editor2');
+    return document.createElement('dreamy-card-editor');
   }
 
   public setConfig(config: DreamyCardConfig): void {
@@ -61,19 +61,19 @@ export class DreamyCard extends LitElement {
 
   private state(): TemplateResult {
     return html`
-      <ds-state2 .hass=${this.hass} .config=${this.config}></ds-state2>
+      <ds-state .hass=${this.hass} .config=${this.config}></ds-state>
     `;
   }
 
   private stepper(): TemplateResult {
     return html`
-      <ds-stepper2 .hass=${this.hass} .config=${this.config}></ds-stepper2>
+      <ds-stepper .hass=${this.hass} .config=${this.config}></ds-stepper>
     `;
   }
 
   private switcher(): TemplateResult {
     return html`
-      <ds-switcher2 .hass=${this.hass} .config=${this.config}></ds-switcher2>
+      <ds-switcher .hass=${this.hass} .config=${this.config}></ds-switcher>
     `;
   }
 }
@@ -89,5 +89,5 @@ window.customCards.push({
   description: localize('common.description'),
   name: localize('common.name'),
   preview: true,
-  type: 'dreamy-card2',
+  type: 'dreamy-card',
 });
