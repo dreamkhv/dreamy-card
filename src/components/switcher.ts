@@ -6,7 +6,7 @@ import { HomeAssistantService } from '../service';
 import { Template } from '../types';
 import { CardComponent } from './card-component';
 
-@customElement('ds-switcher2')
+@customElement('ds-switcher')
 export class Switcher extends CardComponent {
   static get styles(): CSSResultGroup {
     return styles;
