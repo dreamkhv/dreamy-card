@@ -9,7 +9,7 @@ import { CardComponent } from './card-component';
 @customElement('ds-stepper')
 export class Stepper extends CardComponent {
   static get styles(): CSSResultGroup {
-    return styles;
+    return [super.styles, styles];
   }
 
   private onChange = async (value: number): Promise<void> => {

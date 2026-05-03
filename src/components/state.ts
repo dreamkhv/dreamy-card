@@ -9,7 +9,7 @@ import { CardComponent } from './card-component';
 @customElement('ds-state')
 export class State extends CardComponent {
   static get styles(): CSSResultGroup {
-    return styles;
+    return [super.styles, styles];
   }
 
   protected template(s: HomeAssistantService): Template {

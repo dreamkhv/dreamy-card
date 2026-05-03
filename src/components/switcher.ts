@@ -9,7 +9,7 @@ import { CardComponent } from './card-component';
 @customElement('ds-switcher')
 export class Switcher extends CardComponent {
   static get styles(): CSSResultGroup {
-    return styles;
+    return [super.styles, styles];
   }
 
   private toggle = async (state: boolean): Promise<void> => {

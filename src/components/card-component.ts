@@ -1,11 +1,14 @@
 import { type HomeAssistant } from 'custom-card-helpers';
-import { LitElement, nothing } from 'lit';
+import { LitElement, nothing, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
 
+import sharedStyles from '../css/shared.css';
 import { HomeAssistantService } from '../service';
 import { DreamyCardConfig, Template } from '../types';
 
 export abstract class CardComponent extends LitElement {
+  static styles: CSSResultGroup = sharedStyles;
+
   @property({ attribute: false }) public hass!: HomeAssistant;
   @property({ attribute: false }) public config!: DreamyCardConfig;
 
