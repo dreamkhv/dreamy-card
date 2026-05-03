@@ -52,6 +52,7 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-simple-import-sort": "^13.0.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "globals": "^17.4.0",
@@ -73,10 +74,6 @@
     "not dead"
   ],
   "lint-staged": {
-    "*.js": "eslint --fix",
-    "**/*": "prettier --write --ignore-unknown"
-  },
-  "prettier": {
-    "singleQuote": true
+    "*.{js,ts,mjs}": "eslint --fix"
   }
 }

@@ -3,6 +3,7 @@ import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import { defineConfig } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
+import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sortKeysFix from 'eslint-plugin-sort-keys-fix';
 import globals from 'globals';
@@ -44,6 +45,13 @@ export default defineConfig([
         },
         typescript: true,
       },
+    },
+  },
+  {
+    ...prettierRecommended,
+    rules: {
+      ...prettierRecommended.rules,
+      'prettier/prettier': ['error', { singleQuote: true }],
     },
   },
 ]);
