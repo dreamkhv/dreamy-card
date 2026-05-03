@@ -3,7 +3,6 @@ import { createRequire } from 'node:module';
 
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
-import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
@@ -52,7 +51,6 @@ const plugins = [
     ],
   }),
   postcssLit(),
-  image(),
   typescript(),
   babel({
     babelHelpers: 'runtime',
