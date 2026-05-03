@@ -1,5 +1,5 @@
 import { type HomeAssistant } from 'custom-card-helpers';
-import { LitElement, nothing, type CSSResultGroup } from 'lit';
+import { type CSSResultGroup, LitElement, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 
 import sharedStyles from '../css/shared.css';

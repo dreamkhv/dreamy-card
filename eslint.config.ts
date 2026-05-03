@@ -1,3 +1,9 @@
+declare module 'eslint-plugin-sort-keys-fix' {
+  import type { ESLint } from 'eslint';
+  const plugin: ESLint.Plugin;
+  export default plugin;
+}
+
 import js from '@eslint/js';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
