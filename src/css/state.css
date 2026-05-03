@@ -116,14 +116,6 @@ ha-icon {
     white-space: nowrap;
   }
 
-  .state-unit {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--vc-secondary-text-color);
-    line-height: 1.2;
-    flex-shrink: 0;
-  }
-
   .control-row {
     display: flex;
     align-items: center;
