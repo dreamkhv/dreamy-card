@@ -19,7 +19,7 @@ export class Stepper extends CardComponent {
     });
   };
 
-  public template(s: HomeAssistantService): Template {
+  protected template(s: HomeAssistantService): Template {
     const handleDecrement = () => {
       this.onChange(Math.max(s.getMin(), s.getNumberState() - s.getStep()));
     };

@@ -7,45 +7,8 @@
   text-align: left;
   width: 100%;
   box-sizing: border-box;
-
-  .label-wrap {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .label-icon-circle {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    box-sizing: border-box;
-
-    & ha-icon {
-      --mdc-icon-size: 20px;
-      color: var(--vc-primary-text-color);
-    }
-  }
-
-  .label {
-    min-width: 0;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--vc-primary-text-color);
-    line-height: 1.2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
 }
 
-/* Дорожка-капсула; бегунок — белая «таблетка» (скруглённый прямоугольник) */
 .toggle {
   flex-shrink: 0;
   display: flex;
