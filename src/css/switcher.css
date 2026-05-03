@@ -1,7 +1,8 @@
 :host {
-  --vc-background: var(
-    --ha-card-background,
-    var(--card-background-color, transparent)
+  --vc-background: color-mix(
+    in srgb,
+    var(--ha-card-background, var(--card-background-color, #1e2430)) 97%,
+    white
   );
   --vc-primary-text-color: var(--primary-text-color);
   --vc-secondary-text-color: var(--secondary-text-color);
