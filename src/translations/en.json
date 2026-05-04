@@ -1,17 +1,18 @@
 {
   "common": {
-    "name": "Vacuum Card",
-    "description": "Vacuum card allows you to control your robot vacuum.",
-    "not_available": "Vacuum is not available"
+    "name": "Dreamy card",
+    "description": "With the Dreamy card, you can create status indicators, steppers and toggle switches.",
+    "not_available": "Entity is not available"
   },
   "error": {
     "invalid_config": "Invalid configuration",
     "missing_entity": "Specifying entity is required!"
   },
   "editor": {
+    "type": "Card mode",
     "entity": "Entity",
-    "unit": "Unit",
+    "icon": "Icon",
     "name": "Label",
-    "icon": "Icon"
+    "unit": "Unit"
   }
 }
