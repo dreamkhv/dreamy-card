@@ -71,7 +71,7 @@ export default {
   context: 'window',
   input: 'src/dreamy-card.ts',
   output: {
-    dir: '/Volumes/config/www/development',
+    dir: IS_DEV ? '/Volumes/config/www/development' : 'dist',
     format: 'es',
     inlineDynamicImports: true,
   },
