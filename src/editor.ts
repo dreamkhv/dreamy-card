@@ -17,7 +17,7 @@ type ConfigElement = HTMLInputElement & {
 };
 
 @customElement('dreamy-card-editor')
-export class VacuumCardEditor extends LitElement implements LovelaceCardEditor {
+export class DreamyCardEditor extends LitElement implements LovelaceCardEditor {
   @property({ attribute: false }) public hass?: HomeAssistant;
   @state() private config!: Partial<DreamyCardConfig>;
 
